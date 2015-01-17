@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>WebMiner</title>
+	<link rel="shortcut icon" href="img/bitcoin.ico">
+	
+    <!-- Bootstrap Core CSS -->
+	
+	
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/background.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+</head>
+<body id="page-top" class="index">
+
+<script>
+   setInterval(function () {
+    var value = parseFloat($('#badge').html());
+    value = (value + 0.00104729).toFixed(8);
+    $('#badge').html(value);
+}, 50);
+</script>
+
+<script>
+/* Script to emulate functionality */
+   setInterval(function () {
+   	var value = parseFloat($('#holder').html());
+   	var job0 = "Job 9124819251 for Client: Facebook";
+	var job1 = "Job 1240129410 for Client: Imgur";
+	var job2 = "Job 5123513512 for Client: Venmo";
+	var job3 = "Job 1092831977 for Client: Google";
+	var job4 = "Job 6666666666 for Client: Nest";
+	var job5 = "Job 4724182312 for Client: MongoDB";
+	var job6 = "Job 5554411212 for Client: Context.io";
+	var job7 = "Job 0010020029 for Client: Comcast";
+	var job8 = "Job 4567876544 for Client: Blackboard";
+	var job9 = "Job 1231231312 for Client: Spotify";
+	num = "job"+value.toString();
+	if(value == 9){
+		value = 0;
+	}
+    $('#holder').html(value+1);
+    whatIs = eval(window['num']);
+
+if($('#job1-what').html() != '___'){
+	if($('#job2-what').html() != '___'){
+		if($('#job3-what').html() != '___'){
+			if($('#job4-what').html() != '___'){
+				if($('#job5-what').html() != '___'){
+					 $('#job5-what').html($('#job4-what').html());
+					 $('#job4-what').html($('#job3-what').html());
+					 $('#job3-what').html($('#job2-what').html());
+					 $('#job2-what').html($('#job1-what').html());
+					 $('#job1-what').html(whatIs);
+				}
+				else{
+					$('#job5-what').html(whatIs);
+					$('#job5-status').html("Processing");
+				}
+				}
+			else{
+				$('#job4-what').html(whatIs);
+				$('#job4-status').html("Processing");
+			}
+			}
+		else{
+			$('#job3-what').html(whatIs);
+			$('#job3-status').html("Processing");
+		}
+		}
+	else{
+		$('#job2-what').html(whatIs);
+		$('#job2-status').html("Processing");
+	}
+	}
+else{
+	$('#job1-what').html(whatIs);
+	$('#job1-status').html("Processing");
+}
+}, 100);
+</script>
+
+
+    <!-- Navigation -->
+    <body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#">Sign in</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+    			<div class="col-md-6">
+    				<div class="intro-heading pull-right"><span id="badge">0.00000</span></div>
+				</div>
+    			<div class="col-md-6">
+					<div class="intro-heading pull-left"> M-BTC Earned!</div>
+				</div>
+			</div>
+            </div>
+        </div>
+    </header>
+
+	<!-- Dropdown -->
+	<section id="dropdown">
+		<div class="text-center">
+			<form id="multiples" onsubmit="return false;">
+				<input type="checkbox" id="one2" name="easy" />
+					<label for="one2"><a class="btn-md btn-primary">Details</a></label>
+					<p><br></p>
+					<div class="quietCounter"><span id="holder">0</span></div>
+					<span id="detailsData">
+						<section id="dataGrid">
+						<div class="row">
+							<div class="col-md-6"><h2 class="section-heading">Jobs</h2></div>
+							<div class="col-md-6"><h2 class="section-heading">Status</h2></div>
+						</div>
+						<div class="row">
+							<div class="line"></div>
+							<div class="col-md-6"><span id="job1-what">___</span></div>
+							<div class="col-md-6"><span id="job1-status">___</span></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6"><span id="job2-what">___</span></div>
+							<div class="col-md-6"><span id="job2-status">___</span></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6"><span id="job3-what">___</span></div>
+							<div class="col-md-6"><span id="job3-status">___</span></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6"><span id="job4-what">___</span></div>
+							<div class="col-md-6"><span id="job4-status">___</span></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6"><span id="job5-what">___</span></div>
+							<div class="col-md-6"><span id="job5-status">___</span></div>
+						</div>
+						</section>
+					</span>
+			</form>
+		</div>
+	</section>
+
+
+	<!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="list-inline quicklinks">
+			<span style="float:left;"><a href="http://pennapps.com">Created at PennApps 2015</a></span>
+			</ul>
+		</div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+	
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="./js/jqBootstrapValidation.js"></script>
+	<script src="./js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/background.js"></script>
+	
+	<!-- Transitions! -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/jquery.dlmenu.js"></script>
+		<script src="js/pagetransitions.js"></script>
+
+
+</body>
+</html>
