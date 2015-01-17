@@ -23,7 +23,8 @@
     "socket.io": "~0.9.16",
     "socket.io-client": "~0.9.16",
     "mongoose": "~3.8.21",
-    "bcrypt-nodejs" : "*",
-    "connect-flash" : "*"
+    "bcrypt-nodejs": "*",
+    "connect-flash": "*",
+    "request": "~2.51.0"
   }
 }
