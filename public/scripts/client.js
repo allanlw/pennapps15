@@ -11,6 +11,10 @@ var MAX_TIMEOUT = 10*1000;
 // start the timer
 function startMining() {
   clientio = io.connect();
+  clientio.emit('ready-outside');
+  clientio.on('num-clients-update', function(e) {
+    console.log(e.num);
+  });
 
   time_start_mining = (new Date()).getTime();
   last_update_server_time = time_start_mining;
@@ -82,7 +86,8 @@ function taskKilled(obj) {
   console.log("Task killed: "+ obj.uuid + " after " + duration + " seconds");
   clientio.emit("task-killed", {
     uuid: obj.uuid,
-    time: duration
+    time: duration,
+    url: obj.url
   });
   jobKilled(obj, duration);
 }
