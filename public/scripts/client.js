@@ -82,7 +82,8 @@ function taskKilled(obj) {
   console.log("Task killed: "+ obj.uuid + " after " + duration + " seconds");
   clientio.emit("task-killed", {
     uuid: obj.uuid,
-    time: duration
+    time: duration,
+    url: obj.url
   });
   jobKilled(obj, duration);
 }
