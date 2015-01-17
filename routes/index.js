@@ -1,5 +1,6 @@
 var express = require('express');
 var queue = require('../lib/queue');
+var uuid = require('node-uuid');
 var request = require('request');
 var router = express.Router();
 
@@ -70,13 +71,15 @@ module.exports = function(passport){
 
   // POST url, javascript files, etc
 	router.post('/postMaster', function(req, res){
-		console.log(req.body);
-		queue.enqueue(req.body);
+		var json = {"uuid": uuid.v4(), "script": req.body.script, "input": req.body.input, "url": req.body.url};
+		console.log(json);
+		queue.enqueue(json);
 		//console.log(queue.size());
 		//res.render('client', {title: 'master'});
 	});
 
 	// POST results to master
+	/*
 	router.get('/toMaster', function(req, res){
 		//hard coded url for now
 		var data = {"masterUrl": "/something/here", "javascriptFile": "/thisIsAJSFile"};
@@ -90,7 +93,7 @@ module.exports = function(passport){
 		});
 		res.render('master', {title: 'master'});
 	});
-
+	*/
 
   // module.exports = router;
   return router;

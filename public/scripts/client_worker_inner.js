@@ -17,7 +17,7 @@ function initClient(io, postJSON) {
       exc = e;
     }
 
-    var ro = {"uuid": data.uuid, "result": result, "exception": exc};
+    var ro = {"uuid": data.uuid, "result": result, "url": data.url ,"exception": exc};
     postJSON('task-done', ro);
     io.emit('task-done', ro);
   });

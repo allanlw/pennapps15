@@ -1,6 +1,6 @@
 // Routes for socket.io
 var uuid = require('node-uuid');
-
+var request = require('request');
 var queue = require('../lib/queue');
 
 var available_workers = [];
@@ -30,7 +30,16 @@ function add_io_routes(app) {
   });
 
   app.io.route('task-done', function(req) {
-    console.log(JSON.stringify(req.data));
+    //console.log(JSON.stringify(req.data));
+    console.log(req.data);
+    request.post(
+      req.data.url,
+      { json: req.data},
+      function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+              console.log(body)
+        }
+    });
     serve_task(req);
   });
 
