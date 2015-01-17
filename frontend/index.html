@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="no-js">
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -22,28 +21,41 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 <body id="page-top" class="index">
 
 <script>
    setInterval(function () {
-     var value = parseFloat($('#badge').html());
-     value = (value + 0.00104729).toFixed(8);
-     $('#badge').html(value);
+    var value = parseFloat($('#badge').html());
+    value = (value + 0.00104729).toFixed(8);
+    $('#badge').html(value);
 }, 50);
 </script>
+<!--
+<script>
+   setInterval(function () {
+   	var job0 = "Job [9124819251] for [facebook.com]";
+	var job1 = "Job [1240129410] for [imgur.com]";
+	var job2 = "Job [5123513512] for [venmo.com]";
+	var job3 = "Job [1092831977] for [google.com]";
+	var job4 = "Job [6666666666] for [nest.com]";
+	var job5 = "Job [4724182312] for [mongoDB.com]";
+	var job6 = "Job [5554411212] for [context.io]";
+	var job7 = "Job [0010020029] for [comcast.com]";
+	var job8 = "Job [4567876544] for [blackboard.com]";
+	var job9 = "Job [1231231312] for [spotify.com]";
+
+	var value = parseFloat($('#badge').html());
+	var intvalue = Math.floor(value);
+    var type = "job"+(intvalue.toString());
+    $('#job1').html(alert(window['type']););
+}, 50);
+</script>
+-->
 
     <!-- Navigation -->
     <body id="page-top" class="index">
@@ -68,10 +80,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#resume">Sign in</a>
+                        <a class="page-scroll" href="#">Sign in</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">About</a>
+                        <a class="page-scroll" href="#">About</a>
                     </li>
                 </ul>
             </div>
@@ -88,7 +100,7 @@
     				<div class="intro-heading pull-right"><span id="badge">0.00000</span></div>
 				</div>
     			<div class="col-md-6">
-					<div class="intro-heading pull-left"> mBTC earned!</div>
+					<div class="intro-heading pull-left"> M-BTC Earned!</div>
 				</div>
 			</div>
             </div>
@@ -98,25 +110,23 @@
 
     <!-- Dropdown -->
     <section id="dropdown">
-    	<div class="container">
-        	    <div class="intro-text">
-            	    <a href="#about" class="page-scroll btn-md btn-primary">Details</a>
-            	</div>
-    	</div>
+	    <div class="text-center">
+		    <form id="multiples" onsubmit="return false;">
+			        <input type="checkbox" id="one2" name="easy" />
+			        <label for="one2"><a class="btn-md btn-primary">Details</a></label> 
+			        <span id="job1">0</span>
+			</form>
+		</div>
     </section>
 
 	<!-- Footer -->
     <footer>
         <div class="container">
             <ul class="list-inline quicklinks">
-			<span style="float:left;">Created at PennApps 2015</span>
-			<span style="float:right;">What's Going On?</span>   
+			<span style="float:left;"><a href="http://pennapps.com">Created at PennApps 2015</a></span>
 			</ul>
 		</div>
     </footer>
-
-	
-	<script src="https://developers.google.com/recaptcha/docs/mailhideapi"></script>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -132,13 +142,15 @@
     <!-- Contact Form JavaScript -->
     <script src="./js/jqBootstrapValidation.js"></script>
 	<script src="./js/contact_me.js"></script>
- 
-	 
+
     <!-- Custom Theme JavaScript -->
     <script src="js/background.js"></script>
 	
-	<!-- Recaptcha API -->
-	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<!-- Transitions! -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/jquery.dlmenu.js"></script>
+		<script src="js/pagetransitions.js"></script>
+
 
 </body>
 </html>
