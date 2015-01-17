@@ -4,12 +4,4 @@ block content
   h1= title
   p Welcome to #{title}
 
-  script.
-    io = io.connect();
-
-    io.emit('ready')
-
-    io.on('do-task', function(data) {
-      console.log(data);
-      $('body').append('<p>New task, hooray! ' + new Date().toString() + '('+ data.message + ')</p>');
-    });
+  script(src='/scripts/client.js')
