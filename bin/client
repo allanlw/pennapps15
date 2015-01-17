@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+var io = require('socket.io-client');
+var initClient = require("../public/scripts/client_worker_inner");
+
+var host = process.env.HOST || 'localhost';
+var port = process.env.PORT || 3000;
+
+var url = 'http://' + host + ":" + port;
+console.log(url);
+
+var socket = io.connect(url);
+
+function postJSON(event, data) {
+  console.log(event + ": " + JSON.stringify(data));
+}
+
+socket.on("connect", function() { initClient(socket, postJSON); });
+var x = ["error", "disconnect", "reconnect", "reconnect_attempt", "reconnecting",
+  "reconnect_error", "reconnect_failed"];
+var i;
+for (i = 0; i < x.length; i++) {
+  socket.on(x[i], function(z) {
+    return function(e) { console.log(z + ":"); console.log(e); }
+  }(x[i]));
+}
+
+//initClient(socket, postJSON);
