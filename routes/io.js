@@ -5,6 +5,8 @@ var queue = require('../lib/queue');
 
 var available_workers = [];
 
+var workers_total = 0;
+
 // Serve a task on the request if one is available to serve
 function serve_task(req) {
   if (queue.size() === 0) {
@@ -47,6 +49,16 @@ function add_io_routes(app) {
     s._last_task = null;
     s.on('disconnect', function(e) { handleClose(s); });
     serve_task(req);
+  });
+  app.io.route('ready-outside', function(req) {
+    var io = req.io;
+    workers_total++;
+    io.join('num-clients');
+    app.io.room('num-clients').broadcast('num-clients-update', {num: workers_total});
+    io.socket.on('disconnect', function(e) {
+      workers_total--;
+      app.io.room('num-clients').broadcast('num-clients-update', {num: workers_total});
+    });
   });
 /*
   app.io.on('connection', function(s) {
