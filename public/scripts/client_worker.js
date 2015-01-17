@@ -12,12 +12,15 @@ postJSON('ready');
 
 io.on('do-task', function(data) {
   console.log(data);
-  postJSON('running-task', data);
+  postJSON('do-task', data);
 
   var input = JSON.parse(data.input);
 
   var f = new Function("input", data.script);
   var result = f(input);
-  postJSON('finished-task', result);
-  io.emit('task-done', result);
+
+
+  var ro = {"uuid": data.uuid, "result": result};
+  postJSON('task-done', ro);
+  io.emit('task-done', ro);
 });
