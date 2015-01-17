@@ -1,12 +1,65 @@
 // Client code for running in the browser
 // Handles web worker creation as well as killing tasks that run too long
-var clientWorker = null;
+var clientWorker = null, clientio = null;
 var task_start = null;
 var current_task = null;
+var time_start_mining = null, last_update_server_time = null;
 
 // 10 second timeout for development
 var MAX_TIMEOUT = 10*1000;
 
+// start the timer
+function startMining() {
+  clientio = io.connect();
+
+  time_start_mining = (new Date()).getTime();
+  last_update_server_time = time_start_mining;
+  var t = time_start_mining;
+
+  var intervalid = setInterval(function () {
+    if (time_start_mining !== t) {
+      clearInterval(intervalid);
+      return;
+    }
+    var now = (new Date()).getTime();
+    if (last_update_server_time + 1000 < now) {
+      clientio.emit("mining-sync", {
+        work_time: now - last_update_server_time
+      });
+      last_update_server_time = now;
+    }
+    var value = parseFloat($('#badge').html());
+    value = (value + 0.00104729).toFixed(8);
+    $('#badge').html(value);
+  }, 50);
+
+  startWorker();
+}
+
+/* Job List handling */
+function newJob(x) {
+  $("#dataGridHead").after(
+   $("<div class='row'/>").append(
+     $("<div class='col-md-6'/>").text(x.uuid)
+   ).append(
+     $("<div class='col-md-3'/>").text("Processing")
+   ).append(
+     $("<div class='col-md-3'/>").text("---")
+   )
+  );
+  // remove extra rows and the placeholder
+  $("#dataGrid .row").slice(6).add("#dataGridPlaceholder").fadeOut(function() { $(this).remove()});
+}
+function setFinished(status, t) {
+  var row = $("#dataGrid .row:not(#dataGridHead):first");
+  row.find("div:last-child").text(t + " s");
+  row.find("div:nth-child(2)").text(status);
+}
+function jobComplete(x, t) { setFinished("Success", t); }
+function jobKilled(x, t) { setFinished("Killed", t); }
+function jobError(x, t) { setFinished("Error", t); }
+
+/* General task callbacks */
 function newTask(obj) {
   task_start = (new Date()).getTime();
   console.log("Starting task: "+ obj.uuid);
@@ -27,6 +80,10 @@ function taskKilled(obj) {
   var now = (new Date()).getTime();
   var duration = (now - task_start)/1000;
   console.log("Task killed: "+ obj.uuid + " after " + duration + " seconds");
+  clientio.emit("task-killed", {
+    uuid: obj.uuid,
+    time: duration
+  });
   jobKilled(obj, duration);
 }
 
@@ -64,6 +121,4 @@ function startWorker() {
 
   clientWorker.onmessage = workerOnMessage;
 }
-
-startWorker();
 

@@ -33,6 +33,14 @@ function add_io_routes(app) {
     console.log(JSON.stringify(req.data));
     serve_task(req);
   });
+
+  app.io.route('task-killed', function(req) {
+    console.log(JSON.stringify(req.data));
+  });
+
+  app.io.route('mining-sync', function(req) {
+    console.log(JSON.stringify(req.data));
+  });
 }
 
 module.exports = add_io_routes
