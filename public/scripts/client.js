@@ -21,7 +21,7 @@ if(user==null){
   clientio = io.connect();
   clientio.emit('ready-outside');
   clientio.on('num-clients-update', function(e) {
-    console.log(e.num);
+    $("#users").text(e.num);
   });
 
   time_start_mining = (new Date()).getTime();

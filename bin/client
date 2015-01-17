@@ -17,7 +17,11 @@ function postJSON(event, data) {
   console.log(event + ": " + JSON.stringify(data));
 }
 
-socket.on("connect", function() { initClient(socket, postJSON); });
+socket.on("connect", function() {
+  socket.emit("ready-outside");
+  initClient(socket, postJSON);
+});
+
 var x = ["error", "disconnect", "reconnect", "reconnect_attempt", "reconnecting",
   "reconnect_error", "reconnect_failed"];
 var i;
