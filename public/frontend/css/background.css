@@ -4,6 +4,8 @@ body {
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
     background-image: url(http://i.imgur.com/EK9W4WS.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
 }
 
 
