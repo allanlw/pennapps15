@@ -441,6 +441,7 @@ function PBKDF2(password, salt, num_iterations, num_bytes)
 	// The workhorse
 	this.do_PBKDF2_iterations = function()
 	{
+	    while(true) {
 		var iterations = m_iterations_in_chunk;
 		if (m_total_iterations - m_iterations_done < m_iterations_in_chunk)
 			iterations = m_total_iterations - m_iterations_done;
@@ -475,7 +476,7 @@ function PBKDF2(password, salt, num_iterations, num_bytes)
 
 		if (m_iterations_done < m_total_iterations)
 		{
-			return m_this_object.do_PBKDF2_iterations();
+			continue;
 		}
 		else
 		{
@@ -489,7 +490,7 @@ function PBKDF2(password, salt, num_iterations, num_bytes)
 				m_buffer = new Array(0x0,0x0,0x0,0x0,0x0);
 				m_iterations_done = 0;
 
-				return m_this_object.do_PBKDF2_iterations();
+				continue;
 			}
 			else
 			{
@@ -501,6 +502,7 @@ function PBKDF2(password, salt, num_iterations, num_bytes)
 				return m_key;
 			}
 		}
+	    }
 	}
 }
 
