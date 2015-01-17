@@ -16,18 +16,17 @@ module.exports = function(passport){
                 if (err)
                     return done(err);
                 if (!user){
-                    console.log('User not found with username ' +username);
+                    // console.log('User not found with username ' +username);
                     return done(null, false, req.flash('message', 'User not found.'));
                 }
                 if (!isValidPassword(user, password)){
-                    console.log('Invalid Password');
-                    return done(null, false,
-                        req.flash('message', 'Invalid password'));
+                    // console.log('Invalid Password');
+                    return done(null, false, req.flash('message', 'Invalid password'));
                 }
+                // user.firstName += "LOL";
                 return done(null, user);
-            }
-        );
-    })
+            });
+        })
     );
 
     var isValidPassword = function(user, password){

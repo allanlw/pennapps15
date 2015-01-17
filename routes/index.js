@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/user');
 
 var isAuthenticated = function (req, res, next){
   // go next() if user is authenticated
@@ -49,7 +50,7 @@ module.exports = function(passport){
 
   /* GET signup page. */
   router.get('/signup', function(req, res) {
-      res.render('signup', { message: req.flash('message') });
+      res.render('signup', { message: req.flash('message')});
   });
 
   /* Signup POST */
@@ -62,7 +63,39 @@ module.exports = function(passport){
   /* GET Home Page */
   router.get('/home', isAuthenticated, function(req, res){
     res.render('home', {user: req.user });
-  })
+  });
+
+  /* GET Home Page post */
+  /*
+  router.post('/home', passport.authenticate('update', {
+    successRedirect: '/home',
+    failureRedirect: '/home',
+    failureFlash: true
+  }));
+  */
+
+  /*
+  router.post('/home', function(req, res){
+    res.render('home', {bitCoin: req.param('bitCoin')});
+  });
+  */
+
+  /* Post Home Page */
+  router.post('/home', function(req, res){
+    User.findOne({'username' : req.user.username },
+    function(err, user){
+        if (err)
+            return done(err);
+        user.bitCoin = req.param("bitCoin");
+        user.save(function(err, user){
+            if(err){
+                throw err;
+            }
+            res.render('home', {'user' : user});
+        });
+    });
+  });
+  
 
   /* Logout */
   router.get('/signout', function(req, res){
@@ -73,3 +106,4 @@ module.exports = function(passport){
   // module.exports = router;
   return router;
 }
+
