@@ -39,13 +39,15 @@ head
               li.hidden
                 a(href='#page-top')
               li
-                a.page-scroll(href='/login') Login
+                if locals.user
+                    a(href='/account') #{user.username}
+                else
+                    a(href='/login') Login/Sign Up
               li
-                a.page-scroll(href='/signup') Sign Up
+                a(href='/signup') About
           // /.navbar-collapse
         // /.container-fluid
       // Header
-
       header
         .container
           .intro-text
