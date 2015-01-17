@@ -5,16 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// setting up mongo and monk
+/*
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/accounts');
+*/
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var ioroutes = require('./routes/io');
+// Mongoose API connection
+var dbConfig = require('./db');
+var mongoose = require('mongoose');
+// Using mongoose to connect to our db
+// We refer to db.js's module export with the url reference to a local accounts usercollection
+mongoose.connect(dbConfig.url);
 
 var app = express();
-app.http().io();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,13 +33,41 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Setting up passport
+var passport = require('passport');
+var expressSession = require('express-session');
+// Secret key
+app.use(expressSession({
+    secret: 'mySecretKey',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Using flash to display alert messages in session
+var flash = require('connect-flash');
+app.use(flash());
+
+// Initialize Passport
+var initPassport = require('./passport/init');
+initPassport(passport);
+
+var routes = require('./routes/index')(passport);
+// var users = require('./routes/users');
+var ioroutes = require('./routes/io');
+app.use('/', routes);
+// app.use('/users', users);
+
+app.http().io();
+
+// Code for monk that allows our db to be accessibel to our router
+/*
 app.use(function (req, res, next){
     req.db = db;
     next();
 });
-
-app.use('/', routes);
-app.use('/users', users);
+*/
 
 // Add all the socket.io routes to the app
 ioroutes(app);

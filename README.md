@@ -21,6 +21,17 @@ connecting to: test
 > 
 ```
 
+# Filler commands
+Error handling by means of flash messages displayed to user on error
+```
+npm install connect-flash
+```
+
+bcrypt-nodejs helps with encryption and decryption of passwords
+```
+npm install bcrypt-nodejs
+```
+
 # About
 ```
 Elastic
