@@ -1,9 +1,25 @@
 /*  PennApps  2015 WebMiner CSS   */
 
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
 body {
+
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
     background-image: url(http://i.imgur.com/EK9W4WS.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-size: 100% 100%; /* w3 spec - no browser supports it yet */
+    -moz-background-size: 100% 100%; /* used for firefox */
+    -o-background-size: 100% 100%; /* used for opera */
+    -webkit-background-size: 100% 100%; /* used for safari and chrome */
 }
 
 
@@ -12,7 +28,7 @@ body {
 }
 
 .text-primary {
-    color: #33CCFF;
+    color: #0052CC;
 }
 
 p {
@@ -33,14 +49,14 @@ a.active {
 }
 
 a {
-    color: #0099FF;
+    color: #33CCFF;
 }
 
 a:hover,
 a:focus,
 a:active,
 a.active {
-    color: #0052CC;
+    color: #3399FF;
 }
 
 h1,
@@ -177,13 +193,6 @@ fieldset[disabled] .btn-xl.active {
     color: #33CCFF;
 }
 
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus,
-.navbar-default .navbar-brand:active,
-.navbar-default .navbar-brand.active {
-    color: #fec503;
-}
-
 .navbar-default .navbar-collapse {
     border-color: rgba(255,255,255,.02);
 }
@@ -207,25 +216,25 @@ fieldset[disabled] .btn-xl.active {
     font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
-    color: #000;
+    color: #8D8D8D;
 }
 
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
     outline: 0;
-    color: #33CCFF;
+    color: #0052CC;
 }
 
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
     color: #fff;
-    background-color: #33CCFF;
+    background-color: #0052CC;
 }
 
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
     color: #fff;
-    background-color: #2EB8E6;
+    background-color: #0052CC;
 }
 
 @media(min-width:768px) {
@@ -276,20 +285,40 @@ header .intro-text {
     padding-bottom: 50px;
 }
 
+.connectedNum {
+    position: absolute;
+    left: 50px;
+    margin-bottom: 10px;
+    font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 75px;
+}
+
 @media(min-width:768px) {
     header .intro-text {
-        padding-top: 200px;
+        padding-top: 300px;
         padding-bottom: 10px;
     }
 
     header .intro-text .intro-heading {
         margin-bottom: 10px;
         font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 55px;
+        font-size: 75px;
         font-weight: 700;
         line-height: 75px;
     }
+
 }
+
+header .intro-text h3.section-heading {
+    text-transform: none;
+    text-decoration: underline;
+    font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-top: 10px;
+    font-size: 50px;
+}
+
 section#dropdown {
     margin: 0 auto;
 }
@@ -314,6 +343,8 @@ section h2.section-heading {
      margin-top: 10px;
     font-size: 20px;
 }
+
+
 
 
 .service-heading {
@@ -380,7 +411,7 @@ footer {
 
 footer ul.quicklinks {
     margin-bottom: 0;
-    font-size: 16px;
+    font-size: 18px;
     margin-left:120px;
     text-transform: uppercase;
     text-transform: none;
@@ -388,6 +419,14 @@ footer ul.quicklinks {
     line-height: 40px;
 }
 
+#content {
+    position: relative;
+}
+#content img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
 
 
 .btn:focus,

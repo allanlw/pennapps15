@@ -1,4 +1,7 @@
 var express = require('express');
+var queue = require('../lib/queue');
+var uuid = require('node-uuid');
+var request = require('request');
 var router = express.Router();
 var User = require('../models/user');
 
@@ -16,11 +19,7 @@ module.exports = function(passport){
   
   /* GET home page. */
   router.get('/', function(req, res) {
-    res.render('index', { title: 'Big Cloud' });
-  });
-
-  router.get('/client', function(req, res) {
-    res.render('client', { title: 'Client' });
+    res.render('index', { title: 'Counter' });
   });
 
   /* GET login page. */
@@ -102,6 +101,32 @@ module.exports = function(passport){
     req.logout();
     res.redirect('/');
   });
+
+  // POST url, javascript files, etc
+	router.post('/postMaster', function(req, res){
+		var json = {"uuid": uuid.v4(), "script": req.body.script, "input": req.body.input, "url": req.body.url};
+		console.log(json);
+		queue.enqueue(json);
+		//console.log(queue.size());
+		//res.render('client', {title: 'master'});
+	});
+
+	// POST results to master
+	/*
+	router.get('/toMaster', function(req, res){
+		//hard coded url for now
+		var data = {"masterUrl": "/something/here", "javascriptFile": "/thisIsAJSFile"};
+		request.post(
+	    'http://localhost:4500/getMaster',
+	    { json: data},
+	    function (error, response, body) {
+	        if (!error && response.statusCode == 200) {
+	            console.log(body)
+		    }
+		});
+		res.render('master', {title: 'master'});
+	});
+	*/
 
   // module.exports = router;
   return router;
