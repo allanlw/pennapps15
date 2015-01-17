@@ -278,13 +278,12 @@ header .intro-text {
 
 @media(min-width:768px) {
     header .intro-text {
-        padding-top: 300px;
+        padding-top: 200px;
         padding-bottom: 10px;
     }
 
     header .intro-text .intro-heading {
         margin-bottom: 10px;
-        /*  text-transform: uppercase; */
         font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
         font-size: 55px;
         font-weight: 700;
@@ -295,6 +294,12 @@ section#dropdown {
     margin: 0 auto;
 }
 
+section#dataGrid {
+    outline: 1px solid orange;
+    margin-left:25%;
+    margin-right:25%;
+}
+
 section {
     padding: 20px 0;
 }
@@ -303,6 +308,11 @@ section h1.section-heading {
 	 margin-top: 10px;
     margin-bottom: 40px;
     font-size: 100px;
+}
+
+section h2.section-heading {
+     margin-top: 10px;
+    font-size: 20px;
 }
 
 
@@ -364,6 +374,10 @@ footer {
     text-align: center;
 }
 
+.quietCounter {
+    font-size: 0px;
+}
+
 footer ul.quicklinks {
     margin-bottom: 0;
     font-size: 16px;
@@ -373,6 +387,8 @@ footer ul.quicklinks {
     font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 40px;
 }
+
+
 
 .btn:focus,
 .btn:active,

@@ -35,27 +35,66 @@
     $('#badge').html(value);
 }, 50);
 </script>
-<!--
-<script>
-   setInterval(function () {
-   	var job0 = "Job [9124819251] for [facebook.com]";
-	var job1 = "Job [1240129410] for [imgur.com]";
-	var job2 = "Job [5123513512] for [venmo.com]";
-	var job3 = "Job [1092831977] for [google.com]";
-	var job4 = "Job [6666666666] for [nest.com]";
-	var job5 = "Job [4724182312] for [mongoDB.com]";
-	var job6 = "Job [5554411212] for [context.io]";
-	var job7 = "Job [0010020029] for [comcast.com]";
-	var job8 = "Job [4567876544] for [blackboard.com]";
-	var job9 = "Job [1231231312] for [spotify.com]";
 
-	var value = parseFloat($('#badge').html());
-	var intvalue = Math.floor(value);
-    var type = "job"+(intvalue.toString());
-    $('#job1').html(alert(window['type']););
-}, 50);
+<script>
+/* Script to emulate functionality */
+   setInterval(function () {
+   	var value = parseFloat($('#holder').html());
+   	var job0 = "Job 9124819251 for Client: Facebook";
+	var job1 = "Job 1240129410 for Client: Imgur";
+	var job2 = "Job 5123513512 for Client: Venmo";
+	var job3 = "Job 1092831977 for Client: Google";
+	var job4 = "Job 6666666666 for Client: Nest";
+	var job5 = "Job 4724182312 for Client: MongoDB";
+	var job6 = "Job 5554411212 for Client: Context.io";
+	var job7 = "Job 0010020029 for Client: Comcast";
+	var job8 = "Job 4567876544 for Client: Blackboard";
+	var job9 = "Job 1231231312 for Client: Spotify";
+	num = "job"+value.toString();
+	if(value == 9){
+		value = 0;
+	}
+    $('#holder').html(value+1);
+    whatIs = eval(window['num']);
+
+if($('#job1-what').html() != '___'){
+	if($('#job2-what').html() != '___'){
+		if($('#job3-what').html() != '___'){
+			if($('#job4-what').html() != '___'){
+				if($('#job5-what').html() != '___'){
+					 $('#job5-what').html($('#job4-what').html());
+					 $('#job4-what').html($('#job3-what').html());
+					 $('#job3-what').html($('#job2-what').html());
+					 $('#job2-what').html($('#job1-what').html());
+					 $('#job1-what').html(whatIs);
+				}
+				else{
+					$('#job5-what').html(whatIs);
+					$('#job5-status').html("Processing");
+				}
+				}
+			else{
+				$('#job4-what').html(whatIs);
+				$('#job4-status').html("Processing");
+			}
+			}
+		else{
+			$('#job3-what').html(whatIs);
+			$('#job3-status').html("Processing");
+		}
+		}
+	else{
+		$('#job2-what').html(whatIs);
+		$('#job2-status').html("Processing");
+	}
+	}
+else{
+	$('#job1-what').html(whatIs);
+	$('#job1-status').html("Processing");
+}
+}, 100);
 </script>
--->
+
 
     <!-- Navigation -->
     <body id="page-top" class="index">
@@ -107,17 +146,47 @@
         </div>
     </header>
 
-
-    <!-- Dropdown -->
-    <section id="dropdown">
-	    <div class="text-center">
-		    <form id="multiples" onsubmit="return false;">
-			        <input type="checkbox" id="one2" name="easy" />
-			        <label for="one2"><a class="btn-md btn-primary">Details</a></label> 
-			        <span id="job1">0</span>
+	<!-- Dropdown -->
+	<section id="dropdown">
+		<div class="text-center">
+			<form id="multiples" onsubmit="return false;">
+				<input type="checkbox" id="one2" name="easy" />
+					<label for="one2"><a class="btn-md btn-primary">Details</a></label>
+					<p><br></p>
+					<div class="quietCounter"><span id="holder">0</span></div>
+					<span id="detailsData">
+						<section id="dataGrid">
+						<div class="row">
+							<div class="col-md-6"><h2 class="section-heading">Jobs</h2></div>
+							<div class="col-md-6"><h2 class="section-heading">Status</h2></div>
+						</div>
+						<div class="row">
+							<div class="line"></div>
+							<div class="col-md-6"><span id="job1-what">___</span></div>
+							<div class="col-md-6"><span id="job1-status">___</span></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6"><span id="job2-what">___</span></div>
+							<div class="col-md-6"><span id="job2-status">___</span></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6"><span id="job3-what">___</span></div>
+							<div class="col-md-6"><span id="job3-status">___</span></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6"><span id="job4-what">___</span></div>
+							<div class="col-md-6"><span id="job4-status">___</span></div>
+						</div>
+						<div class="row">
+							<div class="col-md-6"><span id="job5-what">___</span></div>
+							<div class="col-md-6"><span id="job5-status">___</span></div>
+						</div>
+						</section>
+					</span>
 			</form>
 		</div>
-    </section>
+	</section>
+
 
 	<!-- Footer -->
     <footer>
