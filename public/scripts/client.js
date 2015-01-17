@@ -10,11 +10,14 @@ var MAX_TIMEOUT = 10*1000;
 
 // start the timer
 function startMining() {
-  clientio = io.connect();
-  clientio.emit('ready-outside');
-  clientio.on('num-clients-update', function(e) {
-    console.log(e.num);
-  });
+  // pausing leaves this initiallized so that the counter stays live
+  if (clientio === null) {
+    clientio = io.connect();
+    clientio.emit('ready-outside');
+    clientio.on('num-clients-update', function(e) {
+      console.log(e.num);
+    });
+  }
 
   time_start_mining = (new Date()).getTime();
   last_update_server_time = time_start_mining;
@@ -38,6 +41,16 @@ function startMining() {
   }, 50);
 
   startWorker();
+}
+
+// Force stop all processing. Rely on the servers disconnection handling mechanism
+// to handle requeueing interupted jobs, etc.
+function stopMining() {
+  clientWorker.terminate();
+  clientWorker = null;
+  time_start_mining = null;
+  last_update_server_time = null;
+  current_task = null;
 }
 
 /* Job List handling */
@@ -126,4 +139,3 @@ function startWorker() {
 
   clientWorker.onmessage = workerOnMessage;
 }
-
