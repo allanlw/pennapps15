@@ -10,20 +10,24 @@ var MAX_TIMEOUT = 10*1000;
 function newTask(obj) {
   task_start = (new Date()).getTime();
   console.log("Starting task: "+ obj.uuid);
+  newJob(obj);
 }
 function taskComplete(obj) {
   var now = (new Date()).getTime();
   var duration = (now - task_start)/1000;
   if (obj.exception === null) {
     console.log("Task completed: "+ obj.uuid + " after " + duration + " seconds");
+    jobComplete(obj, duration);
   } else {
     console.log("Task failed: "+ obj.uuid + " after " + duration + " seconds");
+    jobError(obj, duration);
   }
 }
 function taskKilled(obj) {
   var now = (new Date()).getTime();
   var duration = (now - task_start)/1000;
   console.log("Task killed: "+ obj.uuid + " after " + duration + " seconds");
+  jobKilled(obj, duration);
 }
 
 function workerOnMessage(e) {

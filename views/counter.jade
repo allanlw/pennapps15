@@ -24,62 +24,29 @@ head
       value = (value + 0.00104729).toFixed(8);
       $('#badge').html(value);
       }, 50);
-    script.
-      /* Script to emulate functionality */
-      setInterval(function () {
-      var value = parseFloat($('#holder').html());
-      var job0 = "Job 9124819251 for Client: Facebook";
-      var job1 = "Job 1240129410 for Client: Imgur";
-      var job2 = "Job 5123513512 for Client: Venmo";
-      var job3 = "Job 1092831977 for Client: Google";
-      var job4 = "Job 6666666666 for Client: Nest";
-      var job5 = "Job 4724182312 for Client: MongoDB";
-      var job6 = "Job 5554411212 for Client: Context.io";
-      var job7 = "Job 0010020029 for Client: Comcast";
-      var job8 = "Job 4567876544 for Client: Blackboard";
-      var job9 = "Job 1231231312 for Client: Spotify";
-      num = "job"+value.toString();
-      if(value == 9){
-      value = 0;
+
+      function newJob(x) {
+        $("#dataGridHead").after(
+          $("<div class='row'/>").append(
+            $("<div class='col-md-6'/>").text(x.uuid)
+          ).append(
+            $("<div class='col-md-3'/>").text("Processing")
+          ).append(
+            $("<div class='col-md-3'/>").text("---")
+          )
+        );
+        // remove extra rows and the placeholder
+        $("#dataGrid .row").slice(6).add("#dataGridPlaceholder").fadeOut(function() { $(this).remove()});
       }
-      $('#holder').html(value+1);
-      whatIs = eval(window['num']);
-      if($('#job1-what').html() != '___'){
-      if($('#job2-what').html() != '___'){
-      if($('#job3-what').html() != '___'){
-      if($('#job4-what').html() != '___'){
-      if($('#job5-what').html() != '___'){
-      $('#job5-what').html($('#job4-what').html());
-      $('#job4-what').html($('#job3-what').html());
-      $('#job3-what').html($('#job2-what').html());
-      $('#job2-what').html($('#job1-what').html());
-      $('#job1-what').html(whatIs);
+      function setFinished(status, t) {
+        var row = $("#dataGrid .row:not(#dataGridHead):first");
+        row.find("div:last-child").text(t + " s");
+        row.find("div:nth-child(2)").text(status);
       }
-      else{
-      $('#job5-what').html(whatIs);
-      $('#job5-status').html("Processing");
-      }
-      }
-      else{
-      $('#job4-what').html(whatIs);
-      $('#job4-status').html("Processing");
-      }
-      }
-      else{
-      $('#job3-what').html(whatIs);
-      $('#job3-status').html("Processing");
-      }
-      }
-      else{
-      $('#job2-what').html(whatIs);
-      $('#job2-status').html("Processing");
-      }
-      }
-      else{
-      $('#job1-what').html(whatIs);
-      $('#job1-status').html("Processing");
-      }
-      }, 100);
+      function jobComplete(x, t) { setFinished("Success", t); }
+      function jobKilled(x, t) { setFinished("Killed", t); }
+      function jobError(x, t) { setFinished("Error", t); }
+	  
     // Navigation
     body#page-top.index
       // Navigation
@@ -125,37 +92,19 @@ head
               span#holder 0
             span#detailsData
               section#dataGrid
-                .row
+                .row#dataGridHead
                   .col-md-6
-                    h2.section-heading Jobs
-                  .col-md-6
+                    h2.section-heading Job
+                  .col-md-3
                     h2.section-heading Status
-                .row
+                  .col-md-3
+                    h2.section-heading Time
                   .line
-                  .col-md-6
-                    span#job1-what ___
-                  .col-md-6
-                    span#job1-status ___
-                .row
-                  .col-md-6
-                    span#job2-what ___
-                  .col-md-6
-                    span#job2-status ___
-                .row
-                  .col-md-6
-                    span#job3-what ___
-                  .col-md-6
-                    span#job3-status ___
-                .row
-                  .col-md-6
-                    span#job4-what ___
-                  .col-md-6
-                    span#job4-status ___
-                .row
-                  .col-md-6
-                    span#job5-what ___
-                  .col-md-6
-                    span#job5-status ___
+                .row#dataGridPlaceholder
+                  .line
+                  .col-md-6 ---
+                  .col-md-3 ---
+                  .col-md-3 ---
       // Footer
       footer
         .container
@@ -179,4 +128,7 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
       script(src='/frontend/js/jquery.dlmenu.js')
       script(src='/frontend/js/pagetransitions.js')
+
+      // Actual client execution
+      script(src='/scripts/client.js')
 

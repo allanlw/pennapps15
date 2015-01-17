@@ -18,10 +18,6 @@ module.exports = function(passport){
     res.render('index', { title: 'Big Cloud' });
   });
 
-  router.get('/client', function(req, res) {
-    res.render('client', { title: 'Client' });
-  });
-
   router.get('/counter', function(req, res) {
     res.render('counter', { title: 'Counter' });
   });
