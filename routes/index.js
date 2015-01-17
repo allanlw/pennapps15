@@ -15,11 +15,7 @@ module.exports = function(passport){
   
   /* GET home page. */
   router.get('/', function(req, res) {
-    res.render('index', { title: 'Big Cloud' });
-  });
-
-  router.get('/counter', function(req, res) {
-    res.render('counter', { title: 'Counter' });
+    res.render('index', { title: 'Counter' });
   });
 
   /* GET login page. */
