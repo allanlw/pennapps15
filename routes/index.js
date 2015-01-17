@@ -22,6 +22,10 @@ module.exports = function(passport){
     res.render('client', { title: 'Client' });
   });
 
+  router.get('/counter', function(req, res) {
+    res.render('counter', { title: 'Counter' });
+  });
+
   /* GET login page. */
   router.get('/login', function(req, res) {
     res.render('login', { message: req.flash('message') });

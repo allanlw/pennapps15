@@ -54,7 +54,6 @@ var initPassport = require('./passport/init');
 initPassport(passport);
 
 var routes = require('./routes/index')(passport);
-// var users = require('./routes/users');
 var ioroutes = require('./routes/io');
 app.use('/', routes);
 // app.use('/users', users);
