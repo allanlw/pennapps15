@@ -14,7 +14,8 @@ function initClient(io, postJSON) {
     try {
       result = (new Function("input", data.script))(input);
     } catch(e) {
-      exc = e;
+      exc = "" + e;
+      console.log(exc);
     }
 
     var ro = {"uuid": data.uuid, "result": result, "url": data.url ,"exception": exc};

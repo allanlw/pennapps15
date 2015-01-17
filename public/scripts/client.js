@@ -103,15 +103,17 @@ function workerOnMessage(e) {
     newTask(o.data);
     // Make sure 60 seconds from now we're executing a different task
     // if not, restart the worker.
-    setTimeout(function() {
-      if (current_task !== o.data.uuid) {
-        return;
-      }
-      clientWorker.terminate();
-      clientWorker = null;
-      taskKilled(o.data);
-      startWorker();
-    }, MAX_TIMEOUT);
+    if (o.data.url !== 'speed-test') {
+      setTimeout(function() {
+        if (current_task !== o.data.uuid) {
+          return;
+        }
+        clientWorker.terminate();
+        clientWorker = null;
+        taskKilled(o.data);
+        startWorker();
+      }, MAX_TIMEOUT);
+    }
   } else if (o.event === 'task-done') {
     current_task = null;
     taskComplete(o.data);
