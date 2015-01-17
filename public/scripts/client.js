@@ -1,3 +1,5 @@
+// Client code for running in the browser
+// Handles web worker creation as well as killing tasks that run too long
 var clientWorker = null;
 var task_start = null;
 var current_task = null;
@@ -60,3 +62,4 @@ function startWorker() {
 }
 
 startWorker();
+

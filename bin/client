@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+// Stand alone client
+// set HOST and PORT environment variables to point to an instance
+// and it will run like any other client
 var io = require('socket.io-client');
 var initClient = require("../public/scripts/client_worker_inner");
 
