@@ -15,4 +15,15 @@ router.get('/login', function(req, res) {
   res.render('login', { title: 'Login' });
 });
 
+/* GET userlist page. */
+router.get('/userlist', function(req, res) {
+    var db = req.db;
+    var collection = db.get('usercollection');
+    collection.find({},{},function(e,docs){
+        res.render('userlist', {
+            "userlist" : docs
+        });
+    });
+});
+
 module.exports = router;
