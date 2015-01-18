@@ -1,7 +1,7 @@
 doctype html
 html
 	head
-		title= title
+		title CM4D - Crowdsourced Cloud Computing
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		link(rel='stylesheet', href='/stylesheets/login.css')
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
@@ -42,16 +42,21 @@ html
 									span#balance #{user.bitCoin.toFixed(10)}
 									| BTC
 							li
-								a(href='/deploy') Deploy
+								a(href='/deploy') Deploy	
 							li
-								a(href='/signout') Sign Out
+								a(href='/run') Home									
+							li
+								a(href='/about') About
+							li
+								a(href='/signout') Sign Out							
 						else
 							li
 								a(href='/login') Login/Sign Up
-						li
-							a(href='/about') About
-						li
-							a(href='/run') Home
+							li
+								a(href='/run') Home									
+							li
+								a(href='/about') About
+
 					// /.navbar-collapse
 		.container
 			block content
@@ -73,5 +78,4 @@ html
 		// Actual client execution
 		script(src='/socket.io/socket.io.js')
 		script(src='/scripts/client.js')
-
 		block scripts
