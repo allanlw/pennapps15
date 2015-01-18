@@ -2,15 +2,9 @@ var express = require('express.io');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // setting up mongo and monk
-/*
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('localhost:27017/accounts');
-*/
 
 // Mongoose API connection
 var dbConfig = require('./db');
@@ -26,18 +20,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Setting up passport
 var passport = require('passport');
-var expressSession = require('express-session');
 // Secret key
-app.use(expressSession({
+app.use(express.cookieParser());
+app.use(express.session({
     secret: 'mySecretKey',
     resave: true,
     saveUninitialized: true
@@ -56,17 +48,8 @@ initPassport(passport);
 var routes = require('./routes/index')(passport);
 var ioroutes = require('./routes/io');
 app.use('/', routes);
-// app.use('/users', users);
 
 app.http().io();
-
-// Code for monk that allows our db to be accessibel to our router
-/*
-app.use(function (req, res, next){
-    req.db = db;
-    next();
-});
-*/
 
 // Add all the socket.io routes to the app
 ioroutes(app);

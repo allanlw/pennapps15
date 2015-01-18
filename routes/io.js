@@ -93,6 +93,7 @@ function add_io_routes(app) {
 
   app.io.route('mining-sync', function(req) {
     console.log(JSON.stringify(req.data));
+    console.log(req.session.passport);
   });
 }
 
