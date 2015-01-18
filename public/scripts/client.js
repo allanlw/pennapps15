@@ -8,18 +8,19 @@ var time_start_mining = null, last_update_server_time = null;
 // 10 second timeout for development
 var MAX_TIMEOUT = 10*1000;
 
+clientio = io.connect();
+clientio.emit('ready-outside');
+clientio.on('num-clients-update', function(e) {
+  $("#users").text(e.num);
+});
+clientio.on('balance-sync', function(e) {
+  $('#balance').text(e.bitcoin.toFixed(10));
+  console.log(e.bitcoin);
+});
+
+
 // start the timer
 function startMining() {
-  clientio = io.connect();
-  clientio.emit('ready-outside');
-  clientio.on('num-clients-update', function(e) {
-    $("#users").text(e.num);
-  });
-  clientio.on('balance-sync', function(e) {
-    $('#balance').text(e.bitcoin.toFixed(10));
-    console.log(e.bitcoin);
-  });
-
   time_start_mining = (new Date()).getTime();
   last_update_server_time = time_start_mining;
   var t = time_start_mining;

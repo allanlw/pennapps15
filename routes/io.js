@@ -56,25 +56,19 @@ function add_io_routes(app) {
     var io = req.io;
     workers_total++;
     io.join('num-clients');
+    if (req.session.passport && req.session.passport.user) {
+      io.join('balance-' + req.session.passport.user);
+    }
     app.io.room('num-clients').broadcast('num-clients-update', {num: workers_total});
     io.socket.on('disconnect', function(e) {
       workers_total--;
       app.io.room('num-clients').broadcast('num-clients-update', {num: workers_total});
     });
   });
-/*
-  app.io.on('connection', function(s) {
-    s.on('disconnect', function(e) {
-      console.log(e);
-      console.log(JSON.stringify(s._last_task));
-    });
-  });
-*/
   // handle errors on the socket now.
   // save the last task sent as req.io._last_task
 
   app.io.route('task-done', function(req) {
-    //console.log(JSON.stringify(req.data));
     console.log(req.data);
     request.post(
       req.data.url,
@@ -98,7 +92,7 @@ function add_io_routes(app) {
       User.findById(req.session.passport.user, function(err, user) {
         user.bitCoin += req.data.work_time / 50 *  0.00104729 / 1000;
         user.save();
-        req.io.emit('balance-sync', {bitcoin: user.bitCoin});
+        app.io.room('balance-' + req.session.passport.user).broadcast('balance-sync', {bitcoin: user.bitCoin});
       });
     }
   });
