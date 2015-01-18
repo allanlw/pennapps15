@@ -328,7 +328,7 @@ section h2.section-heading {
 }
 section#balanceHolder {
     position: absolute;
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, -20%);
     font-size: 14px;
     left: 50%;
     top: 50%;
