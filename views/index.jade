@@ -1,73 +1,37 @@
 extends layout
 
 block content
-	// Navigation
-	body#page-top.index
-		// Navigation
-		nav.navbar.navbar-default.navbar-fixed-top
-			.container
-				.navbar-header.page-scroll
-					button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-						span.sr-only Toggle navigation
-						span.icon-bar
-						span.icon-bar
-						span.icon-bar              
-				#bs-example-navbar-collapse-1.collapse.navbar-collapse
-					ul.nav.navbar-nav.navbar-left
-						li
-							a Currently Connected Users: 
-								span#users -
-					// /.navbar-collapse
-					ul.nav.navbar-nav.navbar-right
-						li.hidden
-							a(href='#page-top')
-						li
-							if locals.user
-								a(href='/home') #{user.username} (My Account)
-								li
-									a(href='/signout') Sign Out
-								li
-									span#balance 0
-									| BTC
-							else
-								a(href='/login') Login/Sign Up
-						li
-							a(href='/about') About
-						li
-							a(href='/') Home
-				// /.navbar-collapse
-			// /.container-fluid
-		// Header
-		header
-			.container
-				.intro-text
-					.col-md-12
-						.intro-heading.pull-center.fixed
-							span#badge 0.00000
-							|  M-BTC Earned!
-		// Dropdown
-		section#dropdown
-			.text-center
-				form#multiples(onsubmit='return false;')
-					input#one2(type='checkbox', name='easy')
-					label(for='one2')
-						a.btn-md.btn-primary Details
-					p
-						br
-					.quietCounter
-						span#holder 0
-					span#detailsData
-						section#dataGrid
-							.row#dataGridHead
-								.col-md-6
-									h2.section-heading Job
-								.col-md-3
-									h2.section-heading Status
-								.col-md-3
-									h2.section-heading Time
-								.line
-							.row#dataGridPlaceholder
-								.line
-								.col-md-6 ---
-								.col-md-3 ---
-								.col-md-3 ---
+	// Header
+	header
+		.container
+			.intro-text
+				.col-md-12
+					.intro-heading.pull-center.fixed
+						span#badge 0.00000
+						|  M-BTC Earned!
+	// Dropdown
+	section#dropdown
+		.text-center
+			form#multiples(onsubmit='return false;')
+				input#one2(type='checkbox', name='easy')
+				label(for='one2')
+					a.btn-md.btn-primary Details
+				p
+					br
+				.quietCounter
+					span#holder 0
+				span#detailsData
+					section#dataGrid
+						.row#dataGridHead
+							.col-md-6
+								h2.section-heading Job
+							.col-md-3
+								h2.section-heading Status
+							.col-md-3
+								h2.section-heading Time
+							.line
+						.row#dataGridPlaceholder
+							.line
+							.col-md-6 ---
+							.col-md-3 ---
+							.col-md-3 ---
