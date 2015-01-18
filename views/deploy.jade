@@ -1,17 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
   div(style = "width: 100%")
     form(method='post', style = 'margin: 0 auto; display:block')
       textarea#dropZone(name='script', style='height: 150px; width: 400px; display: block;margin:  0 auto;padding: 10px 10px;', placeholder='drop or paste files here') 
       textarea#inputZone(name='input', style='height: 150px; width: 400px;  margin-top: 200px;display: block;margin: 0 auto;padding:  10px 10px;', placeholder='drop or paste data here')
       input(type='submit', href='/send', style = 'margin:  0 auto;display: block;')
-  p(style = 'display: block; margin: 0 auto; width: 100px;') Results: #{results}
   pre#results.well
-
-block scripts
   script.
     $(function() {
     clientio = io.connect();
