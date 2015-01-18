@@ -35,18 +35,10 @@ module.exports = function(passport){
     res.render('index', {user: req.user, title: 'Counter' });
   });
 
-  /* GET userlist page. */
-  /*
-  router.get('/userlist', function(req, res) {
-      var db = req.db;
-      var collection = db.get('usercollection');
-      collection.find({},{},function(e,docs){
-          res.render('userlist', {
-              "userlist" : docs
-          });
-      });
+  /* GET about page. */
+      router.get('/about', isAuthenticated, function(req, res) {
+    res.render('about', {user: req.user, title: 'Counter' });
   });
-  */
 
   /* GET signup page. */
   router.get('/signup', function(req, res) {
