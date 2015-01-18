@@ -1,0 +1,192 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Sample 3
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(name='apple-mobile-web-app-status-bar-style', content='black')
+    link(rel='shortcut icon', href='/images/favicon.ico')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/flat-ui.css')
+    link(rel='stylesheet', href='/stylesheets/icon-font.css')
+    link(rel='stylesheet', href='/stylesheets/front-style.css')
+    link(rel='stylesheet', href='/stylesheets/carousel.css')
+    link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', rel='stylesheet')
+  body
+    header.header-10
+      .container
+        .navbar.col-sm-12(role='navigation')
+          .navbar-header
+            button.navbar-toggle(type='button')
+            a.brand(href='#')
+              img(src='images/logo.png', width='70', height='70', alt='')
+              |  Big Cloud
+          .collapse.navbar-collapse.pull-right
+            ul.nav.pull-left
+              li
+                a(href='#') Home
+              li
+                a(href='#') Account
+              li
+                a(href='#') About
+            form.navbar-form.pull-left
+              a.btn.btn-info(href='#') Sign In
+  #myCarousel.carousel.slide(data-ride='carousel')
+    ol.carousel-indicators
+      li.active(data-target='#myCarousel', data-slide-to='0')
+      li(data-target='#myCarousel', data-slide-to='1')
+      li(data-target='#myCarousel', data-slide-to='2')
+    .carousel-inner(role='listbox')
+      .item.active
+        img(src='images/bg2.jpg', alt='bg2')
+        .container
+          .carousel-caption
+            h1 A New Type of Cloud
+            p We take the power of crowdsourcing to the hands of the people.
+            p
+              a.btn.btn-lg.btn-info(href='#', role='button') Get Started
+      .item
+        img(src='images/bg.jpg', alt='bg1')
+        .container
+          .carousel-caption
+            h1 Your browser can work for you
+            p
+              | Leave your browser open with our C3-Compute! We'll match your browser with an Internet job, and you will earn bitcoin while the job runs.
+            p
+              a.btn.btn-lg.btn-info(href='#', role='button') Learn more
+      .item
+        img(src='images/bg3.jpg', alt='bg3')
+        .container
+          .carousel-caption
+            h1 Gather Computing Power
+            p
+              | Get people to crunch your numbers for you. Supply us with a computational function.
+            p
+              a.btn.btn-lg.btn-info(href='#', role='button') Create a job
+    a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+      span.sr-only Previous
+    a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+      span.sr-only Next 
+  .jumbotron(style='background-color: white; margin-top: -30px')
+    .container.text-center
+      h3(style='color: #193561')
+        | Browser does computations via jobs created by others.
+        h5(style='color: #757575')  As long as your browser is open, you'll be earning Bit Coin!
+        .row(style='margin-top: 80px')
+          .col-md-2
+            h3(style='color:#1E9FD6') On the tab
+            br
+            p(style='font-size: 18px;') Big Cloud will use your browser's power and give you Bit Coins in exchange.
+          .col-md-8
+            img(src='/images/bitcoin.png', width='600px', style='')
+          .col-md-2
+            h3(style='color:#1E9FD6') No hassle
+            br
+            p(style='font-size: 18px;') Based on your speed, your broswer can earn you money as long as the tab is open.
+  section.content-23.v-center.bg-midnight-blue.custom-bg
+    div
+      .container
+        .hero-unit
+          h1(style='') See For Yourself
+          br
+          p
+            a.btn.btn-lg.btn-info(href='#', role='button') Speed Test
+    a.control-btn.fui-arrow-down(href='#')  
+  .jumbotron(style='background-color: white; margin-top: -30px')
+    .container.text-center
+      h2(style='color: #256C8A') Why you'll love Big Cloud.
+      br
+      p(style='text-align:center; color: #757575')
+        | Automated browser running application allows gets you money! 
+        br
+        | No set-up. Easy.
+      br
+      .row
+        .col-md-4
+          .iconColors
+            i.fa.fa-mobile.fa-2x
+          h4(style='color:#1E9FD6') Go mobile
+          p(style='font-size: 14px;')
+            | Big Cloud works for mobile
+            br
+            |  devices.
+          br
+          .iconColors
+            i.fa.fa-cloud.fa-2x
+          h4(style='color:#1E9FD6') On the cloud
+          p(style='font-size: 14px;')
+            | Jobs are stored
+            br
+            | securely on the cloud.
+          br
+          .iconColors
+            i.fa.fa-book.fa-2x
+          h4(style='color:#1E9FD6') Earnings
+          p(style='font-size: 14px;')
+            | History of all your
+            br
+            | Bit Coin earnings
+        .col-md-4
+          .iconColors
+            i.fa.fa-archive.fa-2x
+          h4(style='color:#1E9FD6') Archived
+          p(style='font-size: 14px;')
+            | History of completed jobs.
+            br
+            | Gives your current analysis.
+          br
+          .iconColors
+            i.fa.fa-paperclip.fa-2x
+          h4(style='color:#1E9FD6') Organized
+          p(style='font-size: 14px;')
+            | As your finish jobs,
+            br
+            | you can also see your progress.
+          br
+          .iconColors
+            i.fa.fa-truck.fa-2x
+          h4(style='color:#1E9FD6') Delivery
+          p(style='font-size: 14px;')
+            | Do at your own time.
+            br
+            | Whenever you want.
+        .col-md-4
+          .iconColors
+            i.fa.fa-keyboard-o.fa-2x
+          h4(style='color:#1E9FD6') Automation
+          p(style='font-size: 14px;')
+            | As long as your browser
+            br
+            | is open, don't worry.
+          br
+          .iconColors
+            i.fa.fa-cog.fa-2x
+          h4(style='color:#1E9FD6') Effectiveness
+          p(style='font-size: 14px;')
+            | Easy and efficient
+            br
+            | processing with your browser.
+          br
+          .iconColors
+            i.fa.fa-group.fa-2x
+          h4(style='color:#1E9FD6') People
+          p(style='font-size: 14px;')
+            | Crowdsourcing benefits both you
+            br
+            | and computationalists.
+          br
+        .text-center
+          p
+            a.btn.btn-lg.btn-info(href='#', role='button')
+              i.fa.fa-paper-plane
+              |   Explore More Features
+  #end.navbar.navbar-default(style = "background-color: black")
+    a.navbar-text.pull-right(style='font-size: 16px; color: white', href='#') Terms of use
+    p.navbar-text.pull-left(style='font-size: 16px; color: white') © 2015 - Big Cloud. All rights reserved.
+  script(src='/javascripts/jquery-1.10.2.min.js')
+  script(src='/javascripts/bootstrap.min.js')
+  script(src='/javascripts/modernizr.custom.js')
+  script(src='/javascripts/startup-kit.js')

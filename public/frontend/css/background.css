@@ -351,8 +351,9 @@ section#balanceHolder {
 }
 
 .pausePlay {
-    left: 49%;
-    position: absolute;
+    position: fixed;
+    bottom: 3em;
+    right: 4em;
 }
 
 .service-heading {
@@ -450,4 +451,8 @@ footer ul.quicklinks {
 .btn.active,
 .btn:active:focus {
     outline: 0;
+}
+
+.removeHover a:hover{
+    text-decoration: none;
 }
