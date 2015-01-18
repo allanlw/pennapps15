@@ -257,6 +257,7 @@ fieldset[disabled] .btn-xl.active {
     .navbar-default .navbar-nav>.active>a {
         border-radius: 3px;
     }
+}
 
 header {
     text-align: center;
@@ -282,13 +283,17 @@ header {
 
 .intro-text {
   margin-top: 3em;
+  text-align: center;
+}
+
+header .intro-text .intro-heading {
+  font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
 }
 
 @media(min-width:768px) {
     header .intro-text .intro-heading {
-        font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
         font-size: 75px;
-        font-weight: 700;
         line-height: 75px;
     }
 
@@ -298,6 +303,13 @@ header {
         margin-right: auto;
     	}
 
+   .pausePlay {
+      position: fixed;
+      bottom: 3em;
+      right: 4em;
+      float: none;
+      margin-bottom: 0px;
+   }
 
 }
 
@@ -334,29 +346,15 @@ section h4.section-heading {
     padding-top: 100px;
     font-size: 20px;
 }
-/*
-section#balanceHolder {
-    position: absolute;
-    transform: translate(-50%, -20%);
-    font-size: 14px;
-    left: 50%;
-    top: 50%;
-    text-transform: uppercase;
-    font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    letter-spacing: 1px;
-    color: #8D8D8D;
-}
-*/
 
 .yungLogo {
-    transform: translate(0, -50%);
+    text-align: center;
 }
 
 .pausePlay {
-    position: fixed;
-    bottom: 3em;
-    right: 4em;
     opacity: 0.25;
+    float: right;
+    margin-bottom: 2em;
 }
 
 .pausePlay:hover {
@@ -442,7 +440,7 @@ footer ul.quicklinks {
     font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 40px;
 }
-
+/*
 #content {
     position: relative;
 }
@@ -451,7 +449,7 @@ footer ul.quicklinks {
     top: 0px;
     left: 0px;
 }
-
+*/
 
 .btn:focus,
 .btn:active,
