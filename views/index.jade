@@ -23,14 +23,14 @@ block content
                 a(href='#page-top')
               li
                 if locals.user
-                    a(href='/home') #{user.username} (My Account)
-                    li
-                      a(href='/signout') Sign Out
-                    li
-                      span#balance 0
-                      | BTC
+                  a(href='/home') #{user.username} (My Account)
+                  li
+                    a(href='/signout') Sign Out
+                  li
+                    span#balance 0
+                    | BTC
                 else
-                    a(href='/login') Login/Sign Up
+                  a(href='/login') Login/Sign Up
               li
                 a(href='/about') About
               li

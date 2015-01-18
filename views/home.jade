@@ -22,7 +22,12 @@ block content
 						li.hidden
 							a(href='#page-top')
 						li
-							a(href='/login') Login/Sign Up
+							if locals.user
+								a(href='/home') #{user.username} (My Account)
+								li
+									a(href='/signout') Sign Out
+							else
+								a(href='/login') Login/Sign Up
 						li
 							a(href='/about') About
 							li
