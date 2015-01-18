@@ -13,6 +13,9 @@ clientio.emit('ready-outside');
 clientio.on('num-clients-update', function(e) {
   $("#users").text(e.num);
 });
+clientio.on('speed-result', function(e) {
+  console.log(e);
+});
 clientio.on('balance-sync', function(e) {
   $('#balance').text(e.bitcoin.toFixed(10));
 });

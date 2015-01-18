@@ -151,6 +151,7 @@ function add_io_routes(app) {
         } else {
           var diff = (new Date()).getTime() - req.io.socket._speed_start;
           req.io.socket._speed = 1.0/diff;
+          req.io.emit("speed-result", diff);
         }
       });
     } else if (req.data.url) {
