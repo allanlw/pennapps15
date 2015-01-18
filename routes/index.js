@@ -4,6 +4,7 @@ var uuid = require('node-uuid');
 var request = require('request');
 var router = express.Router();
 var User = require('../models/user');
+var mandrill = require('node-mandrill')('vjKM3Pui5DOYKVnHWtWdTg');
 
 var isAuthenticated = function (req, res, next){
   return next();
@@ -141,6 +142,21 @@ module.exports = function(passport){
 
   router.post('/results/:id', function(req, res) {
     console.log(req.body);
+    //send an e-mail to issuer
+    mandrill('/messages/send', {
+    message: {
+        to: [{email: 'winstonc@bu.edu', name: 'Winston Chen'}],
+        from_email: 'you@domain.com',
+        subject: "Job Initiated",
+        text: "CM4D has initiated and finished your job."
+    }
+    }, function(error, response)
+    {
+        //uh oh, there was an error
+        if (error) console.log( JSON.stringify(error) );
+        //everything's good, lets see what mandrill said
+        else console.log(response);
+    });
     //res.render('results', { title: 'Results' });
   });
 
