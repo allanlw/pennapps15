@@ -10,6 +10,7 @@ var isAuthenticated = function (req, res, next){
   return next();
 }
 
+
 // use passport
 module.exports = function(passport){
    /* GET front page. */
@@ -110,12 +111,16 @@ module.exports = function(passport){
 
   //Both of these endpoints control the upload for scripts and data
   router.get('/deploy', function(req, res){
-    res.render('deploy', { title: 'Deployer' });
+    if(req.session.passport && req.session.passport.user){
+      res.render('deploy', { title: 'Deployer' });
+    } else {
+      res.send("Please log in.")
+    }
   })
 
   router.post('/deploy', function(req, res){
-    res.render('deploy', { title: 'Deployed' });
     if(req.session.passport && req.session.passport.user){
+      res.render('deploy', { title: 'Deployed' });
       var id = req.session.passport.user; 
       var data = {
       script: req.body.script,
