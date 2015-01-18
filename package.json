@@ -25,6 +25,7 @@
     "connect-flash": "*",
     "request": "~2.51.0",
     "xmlhttprequest": "~1.7.0",
-    "mailchimp-api": "~2.0.0"
+    "mailchimp-api": "~2.0.0",
+    "node-mandrill": "~1.0.1"
   }
 }
