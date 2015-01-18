@@ -26,6 +26,9 @@ block content
                     a(href='/home') #{user.username} (My Account)
                     li
                       a(href='/signout') Sign Out
+                    li
+                      span#balance 0
+                      | BTC
                 else
                     a(href='/login') Login/Sign Up
               li

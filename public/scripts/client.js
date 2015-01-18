@@ -15,6 +15,10 @@ function startMining() {
   clientio.on('num-clients-update', function(e) {
     $("#users").text(e.num);
   });
+  clientio.on('balance-sync', function(e) {
+    $('#balance').text(e.bitcoin.toFixed(10));
+    console.log(e.bitcoin);
+  });
 
   time_start_mining = (new Date()).getTime();
   last_update_server_time = time_start_mining;

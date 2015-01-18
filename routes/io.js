@@ -3,6 +3,8 @@ var uuid = require('node-uuid');
 var request = require('request');
 var queue = require('../lib/queue');
 
+var User = require('../models/user');
+
 var available_workers = [];
 
 var workers_total = 0;
@@ -92,7 +94,13 @@ function add_io_routes(app) {
   });
 
   app.io.route('mining-sync', function(req) {
-    console.log(JSON.stringify(req.data));
+    if (req.session.passport.user) {
+      User.findById(req.session.passport.user, function(err, user) {
+        user.bitCoin += req.data.work_time / 50 *  0.00104729 / 1000;
+        user.save();
+        req.io.emit('balance-sync', {bitcoin: user.bitCoin});
+      });
+    }
   });
 }
 
