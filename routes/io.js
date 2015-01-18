@@ -94,7 +94,7 @@ function add_io_routes(app) {
   });
 
   app.io.route('mining-sync', function(req) {
-    if (req.session.passport.user) {
+    if (req.session.passport && req.session.passport.user) {
       User.findById(req.session.passport.user, function(err, user) {
         user.bitCoin += req.data.work_time / 50 *  0.00104729 / 1000;
         user.save();
