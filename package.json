@@ -23,6 +23,7 @@
     "mongoose": "~3.8.21",
     "bcrypt-nodejs": "*",
     "connect-flash": "*",
-    "request": "~2.51.0"
+    "request": "~2.51.0",
+    "xmlhttprequest": "~1.7.0"
   }
 }
