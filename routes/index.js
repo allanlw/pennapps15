@@ -103,6 +103,43 @@ module.exports = function(passport){
 		//res.render('client', {title: 'master'});
 	});
 
+  //Both of these endpoints control the upload for scripts and data
+  router.get('/deploy', function(req, res){
+    res.render('deploy', { title: 'Deployer' });
+  })
+
+  router.post('/deploy', function(req, res){
+    res.render('deploy', { title: 'Deployed' });
+    if(req.session.passport && req.session.passport.user){
+      var id = req.session.passport.user; 
+      var data = {
+      script: req.body.script,
+      input: req.body.input, 
+      url: 'http://localhost:3000/results/' + id
+      };
+      request.post(
+      'http://localhost:3000/postMaster',
+      { json: data },
+      function (error, response, body) {
+        console.log(body);
+      });
+      //res.redirect('http://localhost:3000/results/' + id);
+    } else {
+      console.log("user not logged in");
+    }
+  });
+
+  //Displays the result of the finished task
+  // router.get('/results/:id', function(req,res){
+  //   res.render('results', { title: 'Results' });
+  //   res.send(req.body);
+  // });
+
+  router.post('/results/:id', function(req, res) {
+    console.log(req.body);
+    //res.render('results', { title: 'Results' });
+  });
+
 	// POST results to master
 	/*
 	router.get('/toMaster', function(req, res){
