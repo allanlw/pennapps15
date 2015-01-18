@@ -13,11 +13,6 @@ var MAX_TIMEOUT = 10*1000;
 
 // start the timer
 function startMining() {
-if(user.username == null){
-if(user==null){
-  $('#badge').html("Sign In");
-}
-
   clientio = io.connect();
   clientio.emit('ready-outside');
   clientio.on('num-clients-update', function(e) {
