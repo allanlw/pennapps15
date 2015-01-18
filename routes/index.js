@@ -6,20 +6,15 @@ var router = express.Router();
 var User = require('../models/user');
 
 var isAuthenticated = function (req, res, next){
-  // go next() if user is authenticated
-  if(req.isAuthenticated()){
-    return next();
-  }
-  // else
-  res.redirect('/login');
+  return next();
 }
 
 // use passport
 module.exports = function(passport){
   
   /* GET home page. */
-  router.get('/', function(req, res) {
-    res.render('index', { title: 'Counter' });
+  router.get('/', isAuthenticated, function(req, res) {
+    res.render('index', {user: req.user, title: 'Counter' });
   });
 
   /* GET login page. */
