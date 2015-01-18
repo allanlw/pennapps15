@@ -11,9 +11,13 @@ var isAuthenticated = function (req, res, next){
 
 // use passport
 module.exports = function(passport){
-  
-  /* GET home page. */
+   /* GET front page. */
   router.get('/', isAuthenticated, function(req, res) {
+    res.render('front', {user: req.user, title: 'Big Cloud' });
+  });
+
+  /* GET run page. */
+  router.get('/run', isAuthenticated, function(req, res) {
     res.render('index', {user: req.user, title: 'Counter' });
   });
 
