@@ -13,7 +13,7 @@ body {
 
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-image: url(http://i.imgur.com/EK9W4WS.jpg);
+    background-image: url(http://i.imgur.com/8gXpHBw.jpg);
     background-repeat:no-repeat;
     background-size:cover;
     background-size: 100% 100%; /* w3 spec - no browser supports it yet */
@@ -302,11 +302,12 @@ header .intro-text {
 }
 
 section#dropdown {
-    margin: 0 auto;
+	margin-top: 40px;
+	margin-left: 8px;
 }
 
 section#dataGrid {
-    outline: 1px solid orange;
+    outline: 1px solid black;
     margin-left:25%;
     margin-right:25%;
 }
@@ -323,7 +324,12 @@ section h1.section-heading {
 
 
 section h2.section-heading {
-     margin-top: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+section h4.section-heading {
+    padding-top: 100px;
     font-size: 20px;
 }
 /*
@@ -340,6 +346,14 @@ section#balanceHolder {
 }
 */
 
+.yungLogo {
+    transform: translate(0, -50%);
+}
+
+.pausePlay {
+    left: 49%;
+    position: absolute;
+}
 
 .service-heading {
     margin: 15px 0;
@@ -404,6 +418,17 @@ footer ul.quicklinks {
     margin-bottom: 0;
     font-size: 18px;
     margin-left:120px;
+    text-transform: uppercase;
+    text-transform: none;
+    font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 40px;
+}
+
+.aboutHeader {
+    margin-top: 100px;
+    margin-bottom: 0;
+    font-size: 60px;
+    padding-left: 200px
     text-transform: uppercase;
     text-transform: none;
     font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;

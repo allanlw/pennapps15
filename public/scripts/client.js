@@ -142,6 +142,10 @@ var dots = window.setInterval( function() {
 
 
     }, 250);
+
+document.getElementById('player').onclick = function() {
+   startWorker();
+ }
 // Start the worker (kills a running worker if there already is one)
 function startWorker() {
   clientWorker = new Worker('/scripts/client_worker.js');
@@ -150,4 +154,3 @@ function startWorker() {
 
   clientWorker.onmessage = workerOnMessage;
 }
-
