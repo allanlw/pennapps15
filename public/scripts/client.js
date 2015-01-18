@@ -42,7 +42,19 @@ function startMining() {
     $('#badge').html(value);
   }, 50);
 
+  $(".pausePlay button").addClass("fa-pause").removeClass("fa-play");
   startWorker();
+}
+
+// Force stop all processing. Rely on the servers disconnection handling mechanism
+// to handle requeueing interupted jobs, etc.
+function stopMining() {
+  clientWorker.terminate();
+  clientWorker = null;
+  time_start_mining = null;
+  last_update_server_time = null;
+  current_task = null;
+  $(".pausePlay button").addClass("fa-play").removeClass("fa-pause");
 }
 
 /* Job List handling */
@@ -143,9 +155,14 @@ var dots = window.setInterval( function() {
 
     }, 250);
 
-document.getElementById('player').onclick = function() {
-   startWorker();
- }
+$(".pausePlay button").click(function() {
+  if (clientWorker === null) {
+    startMining();
+  } else {
+    stopMining()
+  }
+});
+
 // Start the worker (kills a running worker if there already is one)
 function startWorker() {
   clientWorker = new Worker('/scripts/client_worker.js');

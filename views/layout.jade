@@ -52,11 +52,11 @@ html
 							a(href='/') Home
 					// /.navbar-collapse
 			// /.container-fluid
-			//.pull-right
-			//	section#balanceHolder
-			//		<br><br>Current Balance: 
-			//		span#balance #{user.bitCoin.toFixed(10)}
-			//		| BTC
+			if locals.user
+				.pull-right
+					section#balanceHolder Current Balance: 
+						span#balance #{user.bitCoin.toFixed(10)}
+						| BTC
 	footer
 		.container
 			ul.list-inline.quicklinks
