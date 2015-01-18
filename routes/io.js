@@ -1,7 +1,10 @@
 // Routes for socket.io
 var uuid = require('node-uuid');
 var request = require('request');
+var fs = require('fs');
+var path = require('path');
 var queue = require('../lib/queue');
+var crypt = require('crypto');
 
 var User = require('../models/user');
 
@@ -9,8 +12,72 @@ var available_workers = [];
 
 var workers_total = 0;
 
+var pbkdf2_source = fs.readFileSync(path.join(__dirname, '..', 'resources', 'pbkdf2.js'), 'utf-8');
+var pbkdf2_rounds = 1000;
+var speed_test_source = (
+"var i, res = [];\n" +
+"var pbkdf2 = (function(input) { \n" + pbkdf2_source + "\n });" +
+"for (i = 0; i < input.inputs.length; i++) {\n"+
+"  res.push(pbkdf2({password:input.inputs[i].password, "+
+"     salt:input.inputs[i].salt, num_iterations: input.num_iterations}));"+
+"}\n"+
+"console.log(res); return {'outputs': res};"
+);
+var speed_test_inputs = 25;
+var speed_test_checks = 5;
+
+function getPassSaltList() {
+  var res = [], i;
+  for (i = 0; i < speed_test_inputs; i++) {
+    res.push({password: uuid.v4(), salt: uuid.v4()});
+  }
+  return res;
+}
+
+function PBKDF2(pass, salt, cb) {
+  crypt.pbkdf2(pass, salt, pbkdf2_rounds, 256, cb);
+}
+
+function verifyPBKDF2(inputs, o, done) {
+  var i;
+  if (inputs.length != o.length) { return done(false); }
+
+  var f = function(i) {
+    var r = Math.floor(Math.random() * o.length);
+    PBKDF2(inputs[r].password, inputs[r].salt, function(err, x) {
+      if (o[r] != x.toString('hex')) {
+        done(false);
+      } else {
+        i++;
+        if (i < speed_test_checks) {
+          f(i);
+        } else {
+          done(true);
+        }
+      }
+    });
+  };
+
+  f(0);
+}
+
 // Serve a task on the request if one is available to serve
 function serve_task(req) {
+  if (typeof(req.io.socket._speed) === "undefined") {
+    req.io.socket._speed_inputs = getPassSaltList();
+    req.io.socket._speed_start = (new Date()).getTime();
+    req.io.emit('do-task', {
+      'url': 'speed-test',
+      'uuid': uuid.v4(),
+      'script': speed_test_source,
+      'input': JSON.stringify({
+        num_iterations: pbkdf2_rounds,
+        inputs: req.io.socket._speed_inputs
+      })
+    });
+    return;
+  }
+
   if (queue.size() === 0) {
     available_workers.push(req.io);
     console.log(available_workers.length + " free workers");
@@ -76,14 +143,26 @@ function add_io_routes(app) {
 
   app.io.route('task-done', function(req) {
     console.log(req.data);
-    request.post(
-      req.data.url,
-      { json: req.data},
-      function (error, response, body) {
-          if (!error && response.statusCode == 200) {
-              console.log(body)
+    if (req.data.url === 'speed-test') {
+      verifyPBKDF2(req.io.socket._speed_inputs, req.data.result.outputs, function(correct) {
+        if (!correct) {
+          console.log("CHEATER!!!!!");
+          req.io.disconnect();
+        } else {
+          var diff = (new Date()).getTime() - req.io.socket._speed_start;
+          req.io.socket._speed = 1.0/diff;
         }
-    });
+      });
+    } else if (req.data.url) {
+      request.post(
+        req.data.url,
+        { json: req.data},
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                console.log(body)
+          }
+      });
+    }
     req.io._last_task = null;
     serve_task(req);
   });
