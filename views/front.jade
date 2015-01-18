@@ -25,13 +25,19 @@ html(lang='en')
           .collapse.navbar-collapse.pull-right
             ul.nav.pull-left
               li
-                a(href='#') Home
+                a(href='/run') Home
               li
-                a(href='#') Account
+                if locals.user
+                  a(href='/home') #{user.username} (My Account)
+                  li
+                    a(href='/signout') Sign Out
+                else
+                  a(href='/login') Login/Sign Up
               li
-                a(href='#') About
-            form.navbar-form.pull-left
-              a.btn.btn-info(href='#') Sign In
+                a(href='/about') About
+            if !locals.user
+              form.navbar-form.pull-left
+                a.btn.btn-info(href='/login') Sign In
   #myCarousel.carousel.slide(data-ride='carousel')
     ol.carousel-indicators
       li.active(data-target='#myCarousel', data-slide-to='0')
@@ -45,7 +51,7 @@ html(lang='en')
             h1 A New Type of Cloud
             p We take the power of crowdsourcing to the hands of the people.
             p
-              a.btn.btn-lg.btn-info(href='#', role='button') Get Started
+              a.btn.btn-lg.btn-info(href='/signup', role='button') Get Started
       .item
         img(src='images/bg.jpg', alt='bg1')
         .container
@@ -54,7 +60,7 @@ html(lang='en')
             p
               | Leave your browser open with our C3-Compute! We'll match your browser with an Internet job, and you will earn bitcoin while the job runs.
             p
-              a.btn.btn-lg.btn-info(href='#', role='button') Learn more
+              a.btn.btn-lg.btn-info(href='/about', role='button') Learn more
       .item
         img(src='images/bg3.jpg', alt='bg3')
         .container
@@ -63,7 +69,7 @@ html(lang='en')
             p
               | Get people to crunch your numbers for you. Supply us with a computational function.
             p
-              a.btn.btn-lg.btn-info(href='#', role='button') Create a job
+              a.btn.btn-lg.btn-info(href='/run', role='button') Create a job
     a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
       span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
       span.sr-only Previous
@@ -93,7 +99,7 @@ html(lang='en')
           h1(style='') See For Yourself
           br
           p
-            a.btn.btn-lg.btn-info(href='#', role='button') Speed Test
+            a.btn.btn-lg.btn-info(href='/signup', role='button') Speed Test
     a.control-btn.fui-arrow-down(href='#')  
   .jumbotron(style='background-color: white; margin-top: -30px')
     .container.text-center
@@ -180,11 +186,11 @@ html(lang='en')
           br
         .text-center
           p
-            a.btn.btn-lg.btn-info(href='#', role='button')
+            a.btn.btn-lg.btn-info(href='/about', role='button')
               i.fa.fa-paper-plane
               |   Explore More Features
   #end.navbar.navbar-default(style = "background-color: black")
-    a.navbar-text.pull-right(style='font-size: 16px; color: white', href='#') Terms of use
+    a.navbar-text.pull-right(style='font-size: 16px; color: white', href='/about') Terms of use
     p.navbar-text.pull-left(style='font-size: 16px; color: white') © 2015 - Big Cloud. All rights reserved.
   script(src='/javascripts/jquery-1.10.2.min.js')
   script(src='/javascripts/bootstrap.min.js')
