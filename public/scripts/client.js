@@ -4,12 +4,9 @@ var clientWorker = null, clientio = null;
 var task_start = null;
 var current_task = null;
 var time_start_mining = null, last_update_server_time = null;
-var User = require('../models/user');
-
 
 // 10 second timeout for development
 var MAX_TIMEOUT = 10*1000;
-
 
 // start the timer
 function startMining() {
