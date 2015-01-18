@@ -41,6 +41,8 @@ head
               li
                 if locals.user
                     a(href='/account') #{user.username}
+                      span#balance 0
+                      | BTC
                 else
                     a(href='/login') Login/Sign Up
               li
