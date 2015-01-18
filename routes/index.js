@@ -29,7 +29,6 @@ module.exports = function(passport){
     falureFlash : true
   }));
 
-
   /* GET home page. */
       router.get('/', isAuthenticated, function(req, res) {
     res.render('index', {user: req.user, title: 'Counter' });
