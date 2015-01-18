@@ -5,6 +5,10 @@ function initClient(io, postJSON) {
 
   postJSON('ready');
 
+  io.on("speed-result", function(data) {
+    postJSON("speed", data);
+  });
+
   io.on('do-task', function(data) {
     postJSON('do-task', data);
 

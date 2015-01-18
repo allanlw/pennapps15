@@ -21,7 +21,7 @@ var speed_test_source = (
 "  res.push(pbkdf2({password:input.inputs[i].password, "+
 "     salt:input.inputs[i].salt, num_iterations: input.num_iterations}));"+
 "}\n"+
-"console.log(res); return {'outputs': res};"
+"return {'outputs': res};"
 );
 var speed_test_inputs = 25;
 var speed_test_checks = 5;
@@ -63,7 +63,7 @@ function verifyPBKDF2(inputs, o, done) {
 
 // Serve a task on the request if one is available to serve
 function serve_task(req) {
-  if (typeof(req.io.socket._speed) === "undefined") {
+  if (typeof(req.io.socket._speed_start) === "undefined") {
     req.io.socket._speed_inputs = getPassSaltList();
     req.io.socket._speed_start = (new Date()).getTime();
     req.io.emit('do-task', {
@@ -151,7 +151,8 @@ function add_io_routes(app) {
         } else {
           var diff = (new Date()).getTime() - req.io.socket._speed_start;
           req.io.socket._speed = 1.0/diff;
-          req.io.emit("speed-result", diff);
+          req.io.emit("speed-result", {speed: req.io.socket._speed});
+          console.log("Speed: "+req.io.socket._speed);
         }
       });
     } else if (req.data.url) {

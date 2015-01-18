@@ -5,16 +5,13 @@ var task_start = null;
 var current_task = null;
 var time_start_mining = null, last_update_server_time = null;
 
-// 10 second timeout for development
-var MAX_TIMEOUT = 10*1000;
+// 30 second timeout for development
+var MAX_TIMEOUT = 30*1000;
 
 clientio = io.connect();
 clientio.emit('ready-outside');
 clientio.on('num-clients-update', function(e) {
   $("#users").text(e.num);
-});
-clientio.on('speed-result', function(e) {
-  console.log(e);
 });
 clientio.on('balance-sync', function(e) {
   $('#balance').text(e.bitcoin.toFixed(10));
@@ -117,6 +114,11 @@ function workerOnMessage(e) {
   if (o.event === 'ready') {
     return;
   }
+  if (o.event === 'speed') {
+    var speed = o.data.speed;
+    console.log("Speed: "+speed);
+    return;
+  }
 
   if (o.event === 'do-task') {
     current_task = o.data.uuid;
@@ -155,9 +157,6 @@ var dots = window.setInterval( function() {
     }
     if ( wait.innerHTML.length > 2 )
         window.dotsGoingUp = false;
-
-
-
     }, 250);
 
 $(".pausePlay button").click(function() {
