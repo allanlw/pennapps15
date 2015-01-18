@@ -258,16 +258,6 @@ fieldset[disabled] .btn-xl.active {
         border-radius: 3px;
     }
 
-    .navbar-default.navbar-shrink {
-        padding: 10px 0;
-        background-color: #222;
-    }
-
-    .navbar-default.navbar-shrink .navbar-brand {
-        font-size: 1.5em;
-    }
-}
-
 header {
     text-align: center;
     color: #000;
@@ -311,14 +301,6 @@ header .intro-text {
 
 }
 
-header .intro-text h3.section-heading {
-    text-transform: none;
-    text-decoration: underline;
-    font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    margin-top: 10px;
-    font-size: 50px;
-}
-
 section#dropdown {
     margin: 0 auto;
 }
@@ -339,12 +321,24 @@ section h1.section-heading {
     font-size: 100px;
 }
 
+
 section h2.section-heading {
      margin-top: 10px;
     font-size: 20px;
 }
-
-
+/*
+section#balanceHolder {
+    position: absolute;
+    transform: translate(-50%, -20%);
+    font-size: 14px;
+    left: 50%;
+    top: 50%;
+    text-transform: uppercase;
+    font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    letter-spacing: 1px;
+    color: #8D8D8D;
+}
+*/
 
 
 .service-heading {
@@ -405,9 +399,6 @@ footer {
     text-align: center;
 }
 
-.quietCounter {
-    font-size: 0px;
-}
 
 footer ul.quicklinks {
     margin-bottom: 0;
