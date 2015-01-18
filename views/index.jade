@@ -11,33 +11,25 @@ block content
 					.intro-heading.pull-center.fixed
 						span#badge 0.00000000
 						|  M-BTC Earned!
-	.pausePlay
-		button.fa.fa-play.fa-3x
+		.pausePlay
+			button.fa.fa-play.fa-2x.btn.btn-default
 
-	// Dropdown
-	section#dropdown
-		.text-center
-			form#multiples(onsubmit='return false;')
-				input#one2(type='checkbox', name='easy')
-				label(for='one2')
-					a.btn-md.btn-primary Details
-				p
-					br
-				span#detailsData
-					section#dataGrid.jumbotron
-						.row#dataGridHead
-							.col-md-6
-								h2.section-heading Job
-							.col-md-3
-								h2.section-heading Status
-							.col-md-3
-								h2.section-heading Time
-							.line
-						.row#dataGridPlaceholder
-							.line
-							.col-md-6 ---
-							.col-md-3 ---
-							.col-md-3 ---
+		// Dropdown
+		section#dropdown.text-center
+			a#detailsBtn.btn-md.btn-primary Details for nerds
+			br
+			#detailsData.well(style="display: none;")
+				table.table
+					thead
+						tr#dataGridHead
+							th(style="width:50%") Job
+							th(style="width:25%") Status
+							th(style="width:25%") Time
+					tbody#detailsBody
+						tr#dataGridPlaceholder
+							td ---
+							td ---
+							td ---
 
 block scripts
 	script.

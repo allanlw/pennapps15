@@ -5,17 +5,12 @@ block content
 		div.row
 			div.col-sm-6.col-md-4.col-md-offset-4
 				#user
-					h1.text-center.login-title <br><br><br><br><br>Welcome to Big Cloud, #{user.firstName}. Your information:
-						div.signup-wall
-							ul.user-details
-								li Username : #{user.username}
-								li Email    : #{user.email}
-								li First Name : #{user.firstName} 
-								li Last Name : #{user.lastName}
-								li Bit Coin : #{user.bitCoin}
-							form(class='form-signin', action = '/home', method='POST')
-								input(type='number', name='bitCoin', class='form-control', placeholder='Number of Bit Coins',required, autofocus)
-								button(class='btn btn-lg btn-primary btn-block', type='submit') Update Bit Coins
-								span.clearfix
+					h1.text-center.login-title Welcome to Big Cloud, #{user.firstName}. Your information:
+					div.signup-wall
+						ul.user-details
+							li Username : #{user.username}
+							li Email    : #{user.email}
+							li First Name : #{user.firstName} 
+							li Last Name : #{user.lastName}
+							li Bit Coin : #{user.bitCoin}
 
-						a(href='/signout', class='text-center new-account') Sign Out

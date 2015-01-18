@@ -270,11 +270,6 @@ header {
     -o-background-size: cover;
 }
 
-header .intro-text {
-    padding-top: 100px;
-    padding-bottom: 50px;
-}
-
 .connectedNum {
     position: absolute;
     left: 50px;
@@ -285,12 +280,11 @@ header .intro-text {
     line-height: 75px;
 }
 
-@media(min-width:768px) {
-    header .intro-text {
-        padding-top: 300px;
-        padding-bottom: 10px;
-    }
+.intro-text {
+  margin-top: 3em;
+}
 
+@media(min-width:768px) {
     header .intro-text .intro-heading {
         margin-bottom: 10px;
         font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -299,17 +293,26 @@ header .intro-text {
         line-height: 75px;
     }
 
+    #detailsData {
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+    	}
+
+
+}
+
+#detailsData {
+  margin-top: 2em;
+}
+
+#detailsBody td {
+  text-align: left;
 }
 
 section#dropdown {
 	margin-top: 40px;
 	margin-left: 8px;
-}
-
-section#dataGrid {
-    outline: 1px solid black;
-    margin-left:25%;
-    margin-right:25%;
 }
 
 section {
@@ -354,6 +357,11 @@ section#balanceHolder {
     position: fixed;
     bottom: 3em;
     right: 4em;
+    opacity: 0.25;
+}
+
+.pausePlay:hover {
+    opacity: 1;
 }
 
 .service-heading {

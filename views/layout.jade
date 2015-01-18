@@ -16,13 +16,10 @@ html
 		link(href='http://fonts.googleapis.com/css?family=Kaushan+Script', rel='stylesheet', type='text/css')
 		link(href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic', rel='stylesheet', type='text/css')
 		link(href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', rel='stylesheet', type='text/css')
-	body
-		block content
-
 	// Navigation
-	body#page-top.index
+	body()
 		// Navigation
-		nav.navbar.navbar-default.navbar-fixed-top
+		nav.navbar.navbar-default
 			.container
 				.navbar-header.page-scroll
 					button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
@@ -39,46 +36,40 @@ html
 					ul.nav.navbar-nav.navbar-right
 						li.hidden
 							a(href='#page-top')
-						li
-							if locals.user
-								a(href='/home') #{user.username} (My Account)
-								li
-									a(href='/signout') Sign Out
-							else
+						if locals.user
+							li
+								a(href='/home') Current Balance: 
+									span#balance #{user.bitCoin.toFixed(10)}
+									| BTC
+							li
+								a(href='/signout') Sign Out
+						else
+							li
 								a(href='/login') Login/Sign Up
 						li
 							a(href='/about') About
 						li
 							a(href='/') Home
 					// /.navbar-collapse
-			// /.container-fluid
-			if locals.user
-				.pull-right
-					section#balanceHolder Current Balance: 
-						span#balance #{user.bitCoin.toFixed(10)}
-						| BTC
-	footer
 		.container
-			ul.list-inline.quicklinks
-				span(style='float:left;')
-					a(href='http://pennapps.com') Created at PennApps 2015
+			block content
 
-	// jQuery
-	script(src='/frontend/js/jquery.js')
-	// Bootstrap Core JavaScript
-	script(src='/frontend/js/bootstrap.min.js')
-	// Plugin JavaScript
-	script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
-	script(src='/frontend/js/classie.js')
-	script(src='/frontend/js/cbpAnimatedHeader.js')
-	// Custom Theme JavaScript
-	script(src='/frontend/js/background.js')
-	// Transitions!
-	script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
-	script(src='/frontend/js/jquery.dlmenu.js')
+		// jQuery
+		script(src='/frontend/js/jquery.js')
+		// Bootstrap Core JavaScript
+		script(src='/frontend/js/bootstrap.min.js')
+		// Plugin JavaScript
+		script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
+		script(src='/frontend/js/classie.js')
+		script(src='/frontend/js/cbpAnimatedHeader.js')
+		// Custom Theme JavaScript
+		script(src='/frontend/js/background.js')
+		// Transitions!
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+		script(src='/frontend/js/jquery.dlmenu.js')
+	
+		// Actual client execution
+		script(src='/socket.io/socket.io.js')
+		script(src='/scripts/client.js')
 
-	// Actual client execution
-	script(src='/socket.io/socket.io.js')
-	script(src='/scripts/client.js')
-
-	block scripts
+		block scripts
