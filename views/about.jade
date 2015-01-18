@@ -1,29 +1,19 @@
 extends layout
 
 block content
-		.container.page-header
-			// Header
-			.project-header.text-center
-				h1
-					| <br>About
-			// Overview
-			.page-header
-				h3
-					| Overview
-			| &#x9;&#x9;&#x9;&#x9;&#x9;
-			p
-				a(href='http://en.wikipedia.org/wiki/Sim_%28pencil_game%29') Sim
-				|  is a game where players take turns drawing lines from point to point. The object of the game is to avoid making a triangle with your own lines. The objective of Sim Pencil AI was to create a &quot;Computer Player&quot; (
-				a(href='java/AiPlayer.java') Source Code
-				| ) that a human could play against. In order to make a decision, the computer would use a MinMax tree to gauge the possible outcomes a couple of moves ahead. This project was a fun application of MinMax trees and my first attempt at Artifical Intelligence.
-			// Implementation
-			.page-header
-				h3
-					| Implementation
-			| &#x9;&#x9;&#x9;&#x9;&#x9;
-			p
-				| While there are five Java files in total, the inner workings of the AI are within 
-				a(href='java/Graph.java') Graph.java
-				|  and 
-				a(href='java/Player.java') Player.java
-				| . Graph.java contains a list of functions that allows the AI to interact with the Grid of Sim (Such as addEdge(), isEdge(), etc). Player.java then uses these functions to establish a base move, and then in conjunction with a MinMax tree, look &apos;forward&apos; and evaluate what move would be most advantageous for it. The evaluation function values traces down the tree based off of whether it is less likely to encounter cycles and whether the human is more likely to encounter cycles.
+ body
+  // Header
+  .project-header.text-center(style="margin-top: -30px;")
+    h1
+      br
+      | About
+  // Overview
+  .page-header
+    h3 Overview
+  p
+    | CM4D is a crowd-sourcing web application that works on almost every device. In exchance for using your Internet bandwidth, CM4D performs computations and gives you Bit Coins in return.
+  // Implementation
+  .page-header
+    h3 Implementation
+  p
+    | Built on the real developer lanaguage stack, we utilized in addition mongodb and express. Through sockets, a master can communicate and deploy a job outward to the slaves in exchange for a rate. Simultaneously, users will perform the master's calculations and receive Bit Coins automatically for their services.
