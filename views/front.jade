@@ -2,11 +2,11 @@ doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
-    title Big Cloud
+    title CM4D - Welcome
     meta(name='apple-mobile-web-app-capable', content='yes')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
     meta(name='apple-mobile-web-app-status-bar-style', content='black')
-    link(rel='shortcut icon', href='/images/favicon.ico')
+    link(rel='shortcut icon', href='frontend/img/bitcoin.ico')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/flat-ui.css')
     link(rel='stylesheet', href='/stylesheets/icon-font.css')
@@ -25,16 +25,21 @@ html(lang='en')
           .collapse.navbar-collapse.pull-right
             ul.nav.pull-left
               li
-                a(href='/run') Home
-              li
                 if locals.user
                   a(href='/home') #{user.username} (My Account)
+                  li
+                    a(href='/run') Home
+                  li
+                    a(href='/about') About                    
                   li
                     a(href='/signout') Sign Out
                 else
                   a(href='/login') Login/Sign Up
-              li
-                a(href='/about') About
+                  li
+                    a(href='/run') Home
+                  li
+                    a(href='/about') About
+
             if !locals.user
               form.navbar-form.pull-left
                 a.btn.btn-info(href='/login') Sign In
@@ -56,11 +61,11 @@ html(lang='en')
         img(src='images/bg.jpg', alt='bg1')
         .container
           .carousel-caption
-            h1 Your browser can work for you
+            h1 Let Your Browser do the Work
             p
               | Leave your browser open with our C3-Compute! We'll match your browser with an Internet job, and you will earn bitcoin while the job runs.
             p
-              a.btn.btn-lg.btn-info(href='/about', role='button') Learn more
+              a.btn.btn-lg.btn-info(href='/about', role='button') Learn More
       .item
         img(src='images/bg3.jpg', alt='bg3')
         .container
@@ -69,7 +74,7 @@ html(lang='en')
             p
               | Get people to crunch your numbers for you. Supply us with a computational function.
             p
-              a.btn.btn-lg.btn-info(href='/deploy', role='button') Create a job
+              a.btn.btn-lg.btn-info(href='/deploy', role='button') Create a Job
     a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
       span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
       span.sr-only Previous
@@ -83,7 +88,7 @@ html(lang='en')
         h5(style='color: #757575')  As long as your browser is open, you'll be earning Bit Coin!
         .row(style='margin-top: 80px')
           .col-md-2
-            h3(style='color:#1E9FD6') On the tab
+            h3(style='color:#1E9FD6') In a tab
             br
             p(style='font-size: 18px;') Big Cloud will use your browser's power and give you Bit Coins in exchange.
           .col-md-8
@@ -103,7 +108,7 @@ html(lang='en')
     a.control-btn.fui-arrow-down(href='#')  
   .jumbotron(style='background-color: white; margin-top: -30px')
     .container.text-center
-      h2(style='color: #256C8A') Why you'll love Big Cloud.
+      h2(style='color: #256C8A') Why you'll love CM4D:
       br
       p(style='text-align:center; color: #757575')
         | Automated browser running application allows gets you money! 
@@ -114,7 +119,7 @@ html(lang='en')
         .col-md-4
           .iconColors
             i.fa.fa-mobile.fa-2x
-          h4(style='color:#1E9FD6') Go mobile
+          h4(style='color:#1E9FD6') Go Mobile
           p(style='font-size: 14px;')
             | Big Cloud works for mobile
             br
@@ -122,7 +127,7 @@ html(lang='en')
           br
           .iconColors
             i.fa.fa-cloud.fa-2x
-          h4(style='color:#1E9FD6') On the cloud
+          h4(style='color:#1E9FD6') On the Cloud
           p(style='font-size: 14px;')
             | Jobs are stored
             br
@@ -190,7 +195,7 @@ html(lang='en')
               i.fa.fa-paper-plane
               |   Explore More Features
   #end.navbar.navbar-default(style = "background-color: black")
-    a.navbar-text.pull-right(style='font-size: 16px; color: white', href='/about') Terms of use
+    a.navbar-text.pull-right(style='font-size: 16px; color: white', href='/about') Terms of Use
     p.navbar-text.pull-left(style='font-size: 16px; color: white') © 2015 - Big Cloud. All rights reserved.
   script(src='/javascripts/jquery-1.10.2.min.js')
   script(src='/javascripts/bootstrap.min.js')

@@ -1,11 +1,21 @@
 extends layout
 
 block content
+ body
+  // Header
+  .project-header.text-center(style="margin-top: -30px;")
+    h1
+      br
+      | Deploy!
   div(style = "width: 100%")
+        a <br>
     form(method='post', style = 'margin: 0 auto; display:block')
-      textarea#dropZone(name='script', style='height: 150px; width: 400px; display: block;margin:  0 auto;padding: 10px 10px;', placeholder='drop or paste files here') 
+      textarea#dropZone(name='script', style='height: 150px; width: 400px; display: block;margin:  0 auto;padding: 10px 10px;', placeholder='drop or paste scripts here')
+      a <br>
       textarea#inputZone(name='input', style='height: 150px; width: 400px;  margin-top: 200px;display: block;margin: 0 auto;padding:  10px 10px;', placeholder='drop or paste data here')
+      a <br>
       input(type='submit', href='/send', style = 'margin:  0 auto;display: block;')
+      a <br>
   pre#results.well
   script.
     $(function() {
