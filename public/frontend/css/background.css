@@ -65,7 +65,6 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: uppercase;
     font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
 }
@@ -257,6 +256,7 @@ fieldset[disabled] .btn-xl.active {
     .navbar-default .navbar-nav>.active>a {
         border-radius: 3px;
     }
+}
 
 header {
     text-align: center;
@@ -270,11 +270,6 @@ header {
     -o-background-size: cover;
 }
 
-header .intro-text {
-    padding-top: 100px;
-    padding-bottom: 50px;
-}
-
 .connectedNum {
     position: absolute;
     left: 50px;
@@ -285,31 +280,49 @@ header .intro-text {
     line-height: 75px;
 }
 
-@media(min-width:768px) {
-    header .intro-text {
-        padding-top: 300px;
-        padding-bottom: 10px;
-    }
+.intro-text {
+  margin-top: 3em;
+  text-align: center;
+}
 
+header .intro-text .intro-heading {
+  font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
+}
+
+@media(min-width:768px) {
     header .intro-text .intro-heading {
-        margin-bottom: 10px;
-        font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
         font-size: 75px;
-        font-weight: 700;
         line-height: 75px;
     }
 
+    #detailsData {
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+    	}
+
+   .pausePlay {
+      position: fixed;
+      bottom: 3em;
+      right: 4em;
+      float: none;
+      margin-bottom: 0px;
+   }
+
+}
+
+#detailsData {
+  margin-top: 2em;
+}
+
+#detailsBody td {
+  text-align: left;
 }
 
 section#dropdown {
 	margin-top: 40px;
 	margin-left: 8px;
-}
-
-section#dataGrid {
-    outline: 1px solid black;
-    margin-left:25%;
-    margin-right:25%;
 }
 
 section {
@@ -332,28 +345,19 @@ section h4.section-heading {
     padding-top: 100px;
     font-size: 20px;
 }
-/*
-section#balanceHolder {
-    position: absolute;
-    transform: translate(-50%, -20%);
-    font-size: 14px;
-    left: 50%;
-    top: 50%;
-    text-transform: uppercase;
-    font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    letter-spacing: 1px;
-    color: #8D8D8D;
-}
-*/
 
 .yungLogo {
-    transform: translate(0, -50%);
+    text-align: center;
 }
 
 .pausePlay {
-    position: fixed;
-    bottom: 3em;
-    right: 4em;
+    opacity: 0.25;
+    float: right;
+    margin-bottom: 2em;
+}
+
+.pausePlay:hover {
+    opacity: 1;
 }
 
 .service-heading {
@@ -435,7 +439,7 @@ footer ul.quicklinks {
     font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 40px;
 }
-
+/*
 #content {
     position: relative;
 }
@@ -444,7 +448,7 @@ footer ul.quicklinks {
     top: 0px;
     left: 0px;
 }
-
+*/
 
 .btn:focus,
 .btn:active,

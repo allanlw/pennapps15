@@ -18,6 +18,9 @@ clientio.on('balance-sync', function(e) {
   console.log(e.bitcoin);
 });
 
+$("#detailsBtn").click(function() {
+  $("#detailsData").slideToggle();
+});
 
 // start the timer
 function startMining() {
@@ -59,22 +62,20 @@ function stopMining() {
 
 /* Job List handling */
 function newJob(x) {
-  $("#dataGridHead").after(
-   $("<div class='row'/>").append(
-     $("<div class='col-md-6'/>").text(x.uuid)
-   ).append(
-     $("<div class='col-md-3'/>").text("Processing").append($("<span id='wait'>.</span>"))
-   ).append(
-     $("<div class='col-md-3'/>").text("---")
-   )
-  );
+  $("<tr/>").append(
+    $("<td/>").text(x.uuid)
+  ).append(
+    $("<td/>").text("Processing").append($("<span id='wait'>.</span>"))
+  ).append(
+    $("<td/>").text("---")
+  ).hide().prependTo("#detailsBody").slideDown();
   // remove extra rows and the placeholder
-  $("#dataGrid .row").slice(6).add("#dataGridPlaceholder").fadeOut(function() { $(this).remove()});
+  $("#detailsBody tr").slice(5).add("#dataGridPlaceholder").slideUp(function() { $(this).remove()});
 }
 function setFinished(status, t) {
-  var row = $("#dataGrid .row:not(#dataGridHead):first");
-  row.find("div:last-child").text(t + " s");
-  row.find("div:nth-child(2)").text(status);
+  var row = $("#detailsBody tr:first");
+  row.find("td:last-child").text(t + " s");
+  row.find("td:nth-child(2)").text(status);
 }
 function jobComplete(x, t) { setFinished("Success", t); }
 function jobKilled(x, t) { setFinished("Killed", t); }
