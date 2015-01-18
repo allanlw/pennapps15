@@ -15,7 +15,7 @@ router.post('/', function(req, res){
   //var fakeScript = "var x = 0; for(i = 0, x = 0; i < input.max; i++) { x+= i*i; } return x;";
   var data = {
   script: req.body.script,
-  input: JSON.stringify({max: 100000000 * Math.random()}),
+  input: req.body.input, //JSON.stringify({max: 100000000 * Math.random()}),
   url: 'http://localhost:4500/getMaster'
   };
     request.post(
