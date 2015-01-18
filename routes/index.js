@@ -18,8 +18,8 @@ module.exports = function(passport){
   });
 
   /* GET login page. */
-  router.get('/login', function(req, res) {
-    res.render('login', { message: req.flash('message') });
+  router.get('/login', isAuthenticated, function(req, res) {
+    res.render('login', {user: req.user, message: req.flash('message') });
   }); 
 
   /* Login POST */
