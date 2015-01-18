@@ -4,21 +4,14 @@ block content
   h1= title
   p Welcome to #{title}
   form(method='post')
-      textarea#dropZone(name='script', , style='height:70%; width: 70%; position: absolute', placeholder='drop or paste files here') test
+      textarea#dropZone(name='script', style='height:30%; width: 70%; position: absolute', placeholder='drop or paste files here') 
+      textarea#inputZone(name='input', style='height:30%; width: 70%; position: absolute; margin-top: 200px', placeholder='drop or paste data here')
       input(type='submit', href='/send', style = 'position:absolute')
   script.
     function handleFileSelect(evt) {
     evt.stopPropagation();
     evt.preventDefault();
     var files = evt.dataTransfer.files; // FileList object.
-    // files is a FileList of File objects. List some properties.
-    var output = [];
-    for (var i = 0, f; f = files[i]; i++) {
-    output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-    f.size, ' bytes, last modified: ',
-    f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-    '</li>');
-    }
     var file = files[0];
     var start =  0;
     var stop = file.size - 1;
@@ -26,7 +19,23 @@ block content
     var blob = file.slice(start, stop + 1);
     reader.onload = function(e) {
     var text = reader.result;
-    document.getElementById('dropZone').innerHTML = text;
+    document.getElementById("dropZone").innerHTML = text;
+    }
+    reader.readAsBinaryString(blob);
+    reader.onload(blob);
+    }
+    function handleFile(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    var files = evt.dataTransfer.files; // FileList object.
+    var file = files[0];
+    var start =  0;
+    var stop = file.size - 1;
+    var reader = new FileReader();
+    var blob = file.slice(start, stop + 1);
+    reader.onload = function(e) {
+    var text = reader.result;
+    document.getElementById("inputZone").innerHTML = text;
     }
     reader.readAsBinaryString(blob);
     reader.onload(blob);
@@ -40,3 +49,6 @@ block content
     var dropZone = document.getElementById('dropZone');
     dropZone.addEventListener('dragover', handleDragOver, false);
     dropZone.addEventListener('drop', handleFileSelect, false);
+    var inputZone = document.getElementById('inputZone');
+    inputZone.addEventListener('dragover', handleDragOver, false);
+    inputZone.addEventListener('drop', handleFile, false);
