@@ -46,7 +46,7 @@ html
 								li
 									a(href='/signout') Sign Out
 								li
-									span#balance 0
+									span#balance #{user.bitCoin.toFixed(10)}
 									| BTC
 							else
 								a(href='/login') Login/Sign Up
@@ -83,5 +83,3 @@ html
 	// Actual client execution
 	script(src='/socket.io/socket.io.js')
 	script(src='/scripts/client.js')
-	script.
-		$(startMining);
