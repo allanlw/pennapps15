@@ -23,11 +23,11 @@ block content
                 a(href='#page-top')
               li
                 if locals.user
-                    a(href='/home') #{user.username} (My Account)
-                    li
-                      a(href='/signout') Sign Out
+                  a(href='/home') #{user.username} (My Account)
+                  li
+                    a(href='/signout') Sign Out
                 else
-                    a(href='/login') Login/Sign Up
+                  a(href='/login') Login/Sign Up
               li
                 a(href='/about') About
               li
