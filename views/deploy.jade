@@ -7,6 +7,8 @@ block content
       textarea#inputZone(name='input', style='height: 150px; width: 400px;  margin-top: 200px;display: block;margin: 0 auto;padding:  10px 10px;', placeholder='drop or paste data here')
       input(type='submit', href='/send', style = 'margin:  0 auto;display: block;')
   pre#results.well
+
+block scripts
   script.
     $(function() {
     clientio = io.connect();
