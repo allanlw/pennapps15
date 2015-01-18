@@ -1,0 +1,80 @@
+extends layout
+
+block content
+  // Navigation
+  body#page-top.index
+    // Navigation
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header.page-scroll
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar              
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-left
+            li
+              a Currently Connected Users: 
+                span#users -
+          // /.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li.hidden
+              a(href='#page-top')
+            li
+              a(href='/login') Login/Sign Up
+            li
+              a(href='/about') About
+              li
+                a(href='/') Home
+        // /.navbar-collapse
+      // /.container-fluid
+
+  div.container
+    div.row
+      div.col-sm-6.col-md-4.col-md-offset-4
+        #user
+          h1.text-center.login-title <br><br><br><br>Welcome to Big Cloud, #{user.firstName}. Your information:
+            div.signup-wall
+              ul.user-details
+                li Username : #{user.username}
+                li Email    : #{user.email}
+                li First Name : #{user.firstName} 
+                li Last Name : #{user.lastName}
+                li Bit Coin : #{user.bitCoin}
+              form(class='form-signin', action = '/home', method='POST')
+                input(type='number', name='bitCoin', class='form-control', placeholder='Number of Bit Coins',required, autofocus)
+                button(class='btn btn-lg btn-primary btn-block', type='submit') Update Bit Coins
+                span.clearfix
+
+            a(href='/signout', class='text-center new-account') Sign Out
+
+    // Footer
+    footer
+      .container
+        ul.list-inline.quicklinks
+          span(style='float:left;')
+            a(href='http://pennapps.com') Created at PennApps 2015
+    // jQuery
+    script(src='/frontend/js/jquery.js')
+    // Bootstrap Core JavaScript
+    script(src='/frontend/js/bootstrap.min.js')
+    // Plugin JavaScript
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
+    script(src='/frontend/js/classie.js')
+    script(src='/frontend/js/cbpAnimatedHeader.js')
+    // Contact Form JavaScript
+    script(src='/frontend/js/jqBootstrapValidation.js')
+    script(src='/frontend/js/contact_me.js')
+    // Custom Theme JavaScript
+    script(src='/frontend/js/background.js')
+    // Transitions!
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script(src='/frontend/js/jquery.dlmenu.js')
+    script(src='/frontend/js/pagetransitions.js')
+
+    // Actual client execution
+    script(src='/socket.io/socket.io.js')
+    script(src='/scripts/client.js')
+    script.
+      $(startMining);

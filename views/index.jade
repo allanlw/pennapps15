@@ -23,13 +23,13 @@ block content
                 a(href='#page-top')
               li
                 if locals.user
-                    a(href='/account') #{user.username} (My Account)
+                    a(href='/home') #{user.username} (My Account)
                     li
-                      a(href='/account') Sign Out
+                      a(href='/signout') Sign Out
                 else
                     a(href='/login') Login/Sign Up
               li
-                a(href='/signup') About
+                a(href='/about') About
               li
                 a(href='/') Home
           // /.navbar-collapse
