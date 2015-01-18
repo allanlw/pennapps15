@@ -11,15 +11,12 @@ block content
 					.intro-heading.pull-center.fixed
 						span#badge 0.00000000
 						|  M-BTC Earned!
-		.pausePlay
-			button.fa.fa-play.fa-2x.btn.btn-default
-
 		// Dropdown
-		section#dropdown.text-center
-			a#detailsBtn.btn-md.btn-primary Details for nerds
+		section.text-center
+			a#detailsBtn.btn.btn-sm.btn-primary Details for nerds
 			br
 			#detailsData.well(style="display: none;")
-				table.table
+				table.table.table-condensed.small
 					thead
 						tr#dataGridHead
 							th(style="width:50%") Job
@@ -30,6 +27,9 @@ block content
 							td ---
 							td ---
 							td ---
+		.pausePlay
+			button.fa.fa-play.fa-2x.btn.btn-default
+
 
 block scripts
 	script.
