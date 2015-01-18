@@ -50,7 +50,7 @@ function newJob(x) {
    $("<div class='row'/>").append(
      $("<div class='col-md-6'/>").text(x.uuid)
    ).append(
-     $("<div class='col-md-3'/>").text("Processing")
+     $("<div class='col-md-3'/>").text("Processing").append($("<span id='wait'>.</span>"))
    ).append(
      $("<div class='col-md-3'/>").text("---")
    )
@@ -122,6 +122,25 @@ function workerOnMessage(e) {
   }
 }
 
+window.dotsGoingUp = true;
+var dots = window.setInterval( function() {
+    var wait = document.getElementById("wait");
+    if(!wait){
+      return;
+    }
+    if ( window.dotsGoingUp ) 
+        wait.innerHTML += ".";
+    else {
+        wait.innerHTML = wait.innerHTML.substring(1, wait.innerHTML.length);
+        if ( wait.innerHTML === "")
+            window.dotsGoingUp = true;
+    }
+    if ( wait.innerHTML.length > 2 )
+        window.dotsGoingUp = false;
+
+
+
+    }, 250);
 // Start the worker (kills a running worker if there already is one)
 function startWorker() {
   clientWorker = new Worker('/scripts/client_worker.js');

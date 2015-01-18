@@ -1,102 +1,73 @@
 extends layout
 
 block content
-    // Navigation
-    body#page-top.index
-      // Navigation
-      nav.navbar.navbar-default.navbar-fixed-top
-        .container
-          .navbar-header.page-scroll
-            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-              span.sr-only Toggle navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar              
-          #bs-example-navbar-collapse-1.collapse.navbar-collapse
-            ul.nav.navbar-nav.navbar-left
-              li
-                a Currently Connected Users: 
-                  span#users -
-            // /.navbar-collapse
-            ul.nav.navbar-nav.navbar-right
-              li.hidden
-                a(href='#page-top')
-              li
-                if locals.user
-                  a(href='/home') #{user.username} (My Account)
-                  li
-                    a(href='/signout') Sign Out
-                  li
-                    span#balance 0
-                    | BTC
-                else
-                  a(href='/login') Login/Sign Up
-              li
-                a(href='/about') About
-              li
-                a(href='/') Home
-          // /.navbar-collapse
-        // /.container-fluid
-      // Header
-      header
-        .container
-          .intro-text
-            .col-md-12
-              .intro-heading.pull-center.fixed
-                span#badge 0.00000
-                |  M-BTC Earned!
-      // Dropdown
-      section#dropdown
-        .text-center
-          form#multiples(onsubmit='return false;')
-            input#one2(type='checkbox', name='easy')
-            label(for='one2')
-              a.btn-md.btn-primary Details
-            p
-              br
-            .quietCounter
-              span#holder 0
-            span#detailsData
-              section#dataGrid
-                .row#dataGridHead
-                  .col-md-6
-                    h2.section-heading Job
-                  .col-md-3
-                    h2.section-heading Status
-                  .col-md-3
-                    h2.section-heading Time
-                  .line
-                .row#dataGridPlaceholder
-                  .line
-                  .col-md-6 ---
-                  .col-md-3 ---
-                  .col-md-3 ---
-      // Footer
-      footer
-        .container
-          ul.list-inline.quicklinks
-            span(style='float:left;')
-              a(href='http://pennapps.com') Created at PennApps 2015
-      // jQuery
-      script(src='/frontend/js/jquery.js')
-      // Bootstrap Core JavaScript
-      script(src='/frontend/js/bootstrap.min.js')
-      // Plugin JavaScript
-      script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
-      script(src='/frontend/js/classie.js')
-      script(src='/frontend/js/cbpAnimatedHeader.js')
-      // Contact Form JavaScript
-      script(src='/frontend/js/jqBootstrapValidation.js')
-      script(src='/frontend/js/contact_me.js')
-      // Custom Theme JavaScript
-      script(src='/frontend/js/background.js')
-      // Transitions!
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
-      script(src='/frontend/js/jquery.dlmenu.js')
-      script(src='/frontend/js/pagetransitions.js')
-
-      // Actual client execution
-      script(src='/socket.io/socket.io.js')
-      script(src='/scripts/client.js')
-      script.
-        $(startMining);
+	// Navigation
+	body#page-top.index
+		// Navigation
+		nav.navbar.navbar-default.navbar-fixed-top
+			.container
+				.navbar-header.page-scroll
+					button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar              
+				#bs-example-navbar-collapse-1.collapse.navbar-collapse
+					ul.nav.navbar-nav.navbar-left
+						li
+							a Currently Connected Users: 
+								span#users -
+					// /.navbar-collapse
+					ul.nav.navbar-nav.navbar-right
+						li.hidden
+							a(href='#page-top')
+						li
+							if locals.user
+								a(href='/home') #{user.username} (My Account)
+								li
+									a(href='/signout') Sign Out
+								li
+									span#balance 0
+									| BTC
+							else
+								a(href='/login') Login/Sign Up
+						li
+							a(href='/about') About
+						li
+							a(href='/') Home
+				// /.navbar-collapse
+			// /.container-fluid
+		// Header
+		header
+			.container
+				.intro-text
+					.col-md-12
+						.intro-heading.pull-center.fixed
+							span#badge 0.00000
+							|  M-BTC Earned!
+		// Dropdown
+		section#dropdown
+			.text-center
+				form#multiples(onsubmit='return false;')
+					input#one2(type='checkbox', name='easy')
+					label(for='one2')
+						a.btn-md.btn-primary Details
+					p
+						br
+					.quietCounter
+						span#holder 0
+					span#detailsData
+						section#dataGrid
+							.row#dataGridHead
+								.col-md-6
+									h2.section-heading Job
+								.col-md-3
+									h2.section-heading Status
+								.col-md-3
+									h2.section-heading Time
+								.line
+							.row#dataGridPlaceholder
+								.line
+								.col-md-6 ---
+								.col-md-3 ---
+								.col-md-3 ---
