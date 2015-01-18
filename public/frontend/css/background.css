@@ -326,6 +326,7 @@ section h2.section-heading {
      margin-top: 10px;
     font-size: 20px;
 }
+/*
 section#balanceHolder {
     position: absolute;
     transform: translate(-50%, -20%);
@@ -337,6 +338,7 @@ section#balanceHolder {
     letter-spacing: 1px;
     color: #8D8D8D;
 }
+*/
 
 
 .service-heading {
