@@ -9,7 +9,20 @@ block content
       textarea#inputZone(name='input', style='height: 150px; width: 400px;  margin-top: 200px;display: block;margin: 0 auto;padding:  10px 10px;', placeholder='drop or paste data here')
       input(type='submit', href='/send', style = 'margin:  0 auto;display: block;')
   p(style = 'display: block; margin: 0 auto; width: 100px;') Results: #{results}
+  pre#results.well
+
+block scripts
   script.
+    $(function() {
+    clientio = io.connect();
+    clientio.emit("listen-deploy");
+    clientio.on("results", function(x) {
+        if (!x) { return; }
+        $("#results").text(x.result);
+        console.log(x);
+    });
+    });
+
     function handleFileSelect(evt) {
     evt.stopPropagation();
     evt.preventDefault();

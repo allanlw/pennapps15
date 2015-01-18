@@ -65,6 +65,12 @@ function add_io_routes(app) {
       app.io.room('num-clients').broadcast('num-clients-update', {num: workers_total});
     });
   });
+  app.io.route("listen-deploy", function(req) {
+     var io = req.io;
+     if (req.session.passport && req.session.passport.user) {
+       io.join('deploy-' + req.session.passport.user);
+     }
+  });
   // handle errors on the socket now.
   // save the last task sent as req.io._last_task
 

@@ -15,7 +15,6 @@ clientio.on('num-clients-update', function(e) {
 });
 clientio.on('balance-sync', function(e) {
   $('#balance').text(e.bitcoin.toFixed(10));
-  console.log(e.bitcoin);
 });
 
 $("#detailsBtn").click(function() {
