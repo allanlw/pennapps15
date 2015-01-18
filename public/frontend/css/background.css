@@ -328,13 +328,12 @@ section h2.section-heading {
 }
 section#balanceHolder {
     position: absolute;
+    transform: translate(-50%, 0%);
+    font-size: 14px;
     left: 50%;
     top: 50%;
-    transform: translate(100%, -50%);
-    font-size: 14px;
     text-transform: uppercase;
     font-family: Inconsolata,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
     letter-spacing: 1px;
     color: #8D8D8D;
 }
