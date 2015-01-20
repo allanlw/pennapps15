@@ -158,10 +158,10 @@ module.exports = function(passport){
     //send an e-mail to issuer
     mandrill('/messages/send', {
     message: {
-        to: [{email: 'winstonc@bu.edu', name: 'Winston Chen'}],
+        to: [{email: '', name: 'Ash Ketchum'}],
         from_email: 'you@domain.com',
-        subject: "Job Initiated",
-        text: "CM4D has initiated and finished your job."
+        subject: "Team Rocket",
+        text: " Prepare for trouble! Make it double! To protect the world with devastation! To unite all people within our nation! To denounce the evil of truth and love! To extend our reach to the stars above! Jessie! James! Team Rocket blast off at the speed of light! Surrender now or prepare to fight! Meowth. That's right!"
     }
     }, function(error, response)
     {
