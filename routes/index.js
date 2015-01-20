@@ -4,7 +4,7 @@ var uuid = require('node-uuid');
 var request = require('request');
 var router = express.Router();
 var User = require('../models/user');
-var mandrill = require('node-mandrill')('vjKM3Pui5DOYKVnHWtWdTg');
+var mandrill = require('node-mandrill')('API KEY');
 
 var isAuthenticated = function (req, res, next){
   return next();
