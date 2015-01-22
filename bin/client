@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 // Stand alone client
 // set HOST and PORT environment variables to point to an instance
 // and it will run like any other client
